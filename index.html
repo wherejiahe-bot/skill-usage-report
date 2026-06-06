@@ -32,31 +32,22 @@
     word-break:keep-all;overflow-wrap:anywhere;
     padding:0 24px;
   }
-  .page{max-width:960px;margin:0 auto;padding:48px 0 96px}
+  .page{max-width:1040px;margin:0 auto;padding:48px 0 96px}
 
-  /* Header */
-  .header{text-align:center;padding:64px 0 48px}
-  .header .meta{display:flex;justify-content:center;gap:24px;font-size:14px;color:var(--text-caption);margin-top:12px;flex-wrap:wrap}
-  .header .meta span{display:flex;align-items:center;gap:4px}
+  .header{text-align:center;padding:48px 0 40px}
+  .header h1{font-size:40px;font-weight:700;letter-spacing:-0.5px}
+  .header .meta{display:flex;justify-content:center;gap:24px;font-size:14px;color:var(--text-caption);margin-top:10px;flex-wrap:wrap}
   .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:500}
   .badge-green{background:var(--green-soft);color:#248a3d}
   .badge-orange{background:var(--orange-soft);color:#b86800}
   .badge-red{background:var(--red-soft);color:#b81b12}
 
-  /* Section */
-  .section{margin-bottom:48px}
-  .section-title{font-size:20px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-  .section-title .count{font-size:14px;font-weight:400;color:var(--text-caption);background:var(--surface);padding:2px 10px;border-radius:20px}
-
-  /* Card grid */
-  .grid{display:grid;gap:12px}
+  /* Stat cards */
+  .grid{display:grid;gap:12px;margin-bottom:40px}
+  .grid-5{grid-template-columns:repeat(5,1fr)}
   .grid-4{grid-template-columns:repeat(4,1fr)}
-  .grid-3{grid-template-columns:repeat(3,1fr)}
-  .grid-2{grid-template-columns:repeat(2,1fr)}
-  @media(max-width:768px){.grid-4,.grid-3,.grid-2{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
-
-  /* Stat card */
+  @media(max-width:768px){.grid-5,.grid-4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.grid-5,.grid-4{grid-template-columns:1fr}}
   .stat-card{
     background:var(--surface);
     backdrop-filter:blur(40px) saturate(1.4);
@@ -67,8 +58,40 @@
     box-shadow:var(--shadow);
     text-align:center;
   }
-  .stat-card .num{font-size:36px;font-weight:700;line-height:1.1}
-  .stat-card .label{font-size:13px;color:var(--text-caption);margin-top:4px}
+  .stat-card .num{font-size:32px;font-weight:700;line-height:1.1}
+  .stat-card .label{font-size:12px;color:var(--text-caption);margin-top:4px}
+
+  /* Cumulative chart */
+  .chart-section{margin-bottom:40px}
+  .chart-section .section-title{font-size:18px;font-weight:600;margin-bottom:16px}
+  .chart-card{
+    background:var(--surface);
+    backdrop-filter:blur(40px) saturate(1.4);
+    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    border:1px solid var(--surface-border);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:var(--shadow);
+  }
+  .chart-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .chart-label{font-size:12px;color:var(--text-caption);width:40px;text-align:right;flex-shrink:0}
+  .chart-bars{flex:1;display:flex;align-items:center;gap:3px;height:28px}
+  .chart-bar-wrap{flex:1;height:20px;background:rgba(0,0,0,0.04);border-radius:4px;overflow:hidden;position:relative}
+  .chart-bar{height:100%;border-radius:4px;transition:width 0.6s ease;min-width:2px}
+  .chart-bar.daily{background:var(--accent);opacity:0.35}
+  .chart-bar.cum{background:var(--accent)}
+  .chart-num{font-size:11px;color:var(--text-secondary);width:36px;text-align:left;flex-shrink:0;font-variant-numeric:tabular-nums}
+
+  /* Tabs */
+  .tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+  .tab-btn{
+    padding:8px 18px;border-radius:20px;border:none;
+    font-size:14px;font-weight:500;cursor:pointer;
+    background:var(--surface);color:var(--text-secondary);
+    transition:all 0.2s;
+  }
+  .tab-btn:hover{background:var(--accent-soft);color:var(--accent)}
+  .tab-btn.active{background:var(--accent);color:#fff}
 
   /* Table */
   .table-wrap{
@@ -78,46 +101,64 @@
     border:1px solid var(--surface-border);
     border-radius:var(--radius);
     box-shadow:var(--shadow);
-    overflow:hidden;
+    overflow:visible;
+    position:relative;
   }
   table{width:100%;border-collapse:collapse;font-size:14px}
-  th{text-align:left;padding:14px 16px;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;background:rgba(0,0,0,0.02)}
-  td{padding:12px 16px;border-top:1px solid rgba(0,0,0,0.04);vertical-align:middle}
-  tr:hover{background:rgba(0,0,0,0.02)}
+  th{text-align:left;padding:12px 16px;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;background:rgba(0,0,0,0.02)}
+  td{padding:10px 16px;border-top:1px solid rgba(0,0,0,0.04);vertical-align:middle}
+  tr:hover{background:rgba(0,0,0,0.03)}
+  tr{cursor:default}
   .skill-name{font-weight:500}
   .call-count{font-weight:600;font-variant-numeric:tabular-nums}
   .call-high{color:var(--accent)}
   .call-mid{color:var(--orange)}
   .call-low{color:var(--text-caption)}
   .call-zero{color:var(--red)}
-  .desc{font-size:13px;color:var(--text-secondary);max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .desc{font-size:13px;color:var(--text-secondary);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
   .dot-green{background:var(--green)}
   .dot-orange{background:var(--orange)}
-  .dot-red{background:var(--red)}
   .dot-gray{background:#c7c7cc}
-
-  /* Section labels */
-  .section-label{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.3px}
+  .dot-red{background:var(--red)}
+  .section-label{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
   .sl-freq{background:var(--green-soft);color:#248a3d}
-  .sl-low{background:var(--orange-soft);color:#b86800}
+  .sl-mid{background:var(--orange-soft);color:#b86800}
+  .sl-low{background:rgba(142,142,147,0.12);color:#6e6e73}
   .sl-zero{background:var(--red-soft);color:#b81b12}
+
+  /* Tooltip */
+  .tooltip{
+    position:fixed;
+    background:rgba(29,29,31,0.92);
+    backdrop-filter:blur(20px) saturate(1.4);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:16px 20px;
+    color:#fff;
+    font-size:13px;
+    pointer-events:none;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity 0.15s,transform 0.15s;
+    z-index:100;
+    min-width:220px;
+    box-shadow:0 8px 40px rgba(0,0,0,0.3);
+  }
+  .tooltip.show{opacity:1;transform:translateY(0)}
+  .tooltip .tt-name{font-weight:600;font-size:15px;margin-bottom:8px}
+  .tooltip .tt-total{color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:6px}
+  .tooltip .tt-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;gap:16px}
+  .tooltip .tt-row .day{color:rgba(255,255,255,0.5);font-size:12px}
+  .tooltip .tt-row .val{font-weight:500;font-size:13px;min-width:20px;text-align:right}
+  .tooltip .tt-bar{flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+  .tooltip .tt-bar-fill{height:100%;border-radius:3px;transition:width 0.3s}
 
   /* Footer */
   .footer{text-align:center;padding:32px 0;font-size:13px;color:var(--text-caption)}
   .footer a{color:var(--accent);text-decoration:none}
   .footer a:hover{text-decoration:underline}
-
-  /* Tabs */
-  .tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-  .tab-btn{
-    padding:8px 18px;border-radius:20px;border:none;
-    font-size:14px;font-weight:500;cursor:pointer;
-    background:var(--surface);color:var(--text-secondary);
-    transition:all 0.2s;
-  }
-  .tab-btn:hover{background:var(--accent-soft);color:var(--accent)}
-  .tab-btn.active{background:var(--accent);color:#fff}
 </style>
 </head>
 <body>
@@ -125,154 +166,159 @@
 
   <!-- Header -->
   <div class="header">
-    <h1 style="font-size:40px;font-weight:700;letter-spacing:-0.5px">Skill Usage Report</h1>
-    <p style="font-size:16px;color:var(--text-secondary);margin-top:8px">WorkBuddy 技能使用情况统计</p>
+    <h1>Skill Usage Report</h1>
+    <p style="font-size:15px;color:var(--text-secondary);margin-top:6px">WorkBuddy 技能使用情况 · 累计统计</p>
     <div class="meta">
-      <span>📅 2026-06-06 18:50</span>
-      <span>📊 83 skills</span>
-      <span>🔍 150 calls logged</span>
+      <span>📅 <span id="gen-date">2026-06-06</span></span>
+      <span>📊 <span id="total-skills">83</span> skills</span>
+      <span>🔍 <span id="total-calls">150</span> total calls</span>
+      <span>📈 <span id="weekly-calls">124</span> this week</span>
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="grid grid-4" style="margin-bottom:48px">
-    <div class="stat-card"><div class="num" style="color:var(--green)">28</div><div class="label">有调用记录</div></div>
-    <div class="stat-card"><div class="num" style="color:var(--red)">55</div><div class="label">零调用</div></div>
-    <div class="stat-card"><div class="num" style="color:var(--accent)">10</div><div class="label">高频 (3次+)</div></div>
-    <div class="stat-card"><div class="num" style="color:var(--orange)">18</div><div class="label">低频 (1-2次)</div></div>
+  <!-- Stat cards -->
+  <div class="grid grid-5" id="stat-cards"></div>
+
+  <!-- Cumulative chart -->
+  <div class="chart-section">
+    <div class="section-title">📈 近7日累计调用趋势</div>
+    <div class="chart-card" id="chart-card"></div>
   </div>
 
   <!-- Tabs -->
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('all')">全部</button>
-    <button class="tab-btn" onclick="switchTab('freq')">高频</button>
-    <button class="tab-btn" onclick="switchTab('low')">低频</button>
+    <button class="tab-btn" onclick="switchTab('freq')">高频 (3+)</button>
+    <button class="tab-btn" onclick="switchTab('low')">低频 (1-2)</button>
     <button class="tab-btn" onclick="switchTab('zero')">零调用</button>
   </div>
 
   <!-- Table -->
-  <div class="table-wrap" id="table-wrap">
+  <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th style="width:50px">#</th>
-          <th style="width:60px">调用</th>
+          <th style="width:40px">#</th>
+          <th style="width:50px">总调用</th>
           <th>技能名</th>
-          <th>最后调用</th>
+          <th style="width:100px">7日累计</th>
           <th>状态</th>
           <th>说明</th>
         </tr>
       </thead>
-      <tbody id="table-body">
-      </tbody>
+      <tbody id="table-body"></tbody>
     </table>
   </div>
 
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip">
+    <div class="tt-name" id="tt-name"></div>
+    <div class="tt-total" id="tt-total"></div>
+    <div id="tt-rows"></div>
+  </div>
+
   <div class="footer">
-    <p>数据来源：WorkBuddy 日志文件（2026-05-22 至 2026-06-06，~4GB）</p>
+    <p>数据来源：WorkBuddy 日志 · 每晚 22:00 自动更新</p>
     <p><a href="https://github.com/wherejiahe-bot/skill-usage-report">GitHub 仓库</a></p>
   </div>
 </div>
 
+<script src="data.js"></script>
 <script>
-const data = [
-  {n:"lobster-mem0",c:32,l:"2026-06-06 18:43",d:"跨项目 mem0 记忆系统集成协议"},
-  {n:"wechat-clawbot-notify",c:28,l:"2026-06-06 16:40",d:"微信通知推送"},
-  {n:"amruta-daily-push",c:19,l:"2026-06-06 16:13",d:"每日 Shri Mataji 文章推送"},
-  {n:"daily-wechat-reminder",c:19,l:"2026-06-06 16:40",d:"每日微信提醒"},
-  {n:"skill-manage",c:9,l:"2026-06-06 18:40",d:"Skill 管理工具"},
-  {n:"ppvi",c:8,l:"2026-06-06 16:11",d:"拼拼视觉美学 PPVI"},
-  {n:"ima-skill",c:4,l:"2026-06-01 08:40",d:"IMA 知识库管理"},
-  {n:"translate",c:3,l:"2026-06-06 04:06",d:"翻译技能"},
-  {n:"brainstorming",c:3,l:"2026-06-05 11:13",d:"头脑风暴"},
-  {n:"long-task-detach",c:3,l:"2026-06-05 00:01",d:"长任务分离"},
-  {n:"mckinsey-consultant",c:3,l:"2026-06-02 20:18",d:"麦肯锡咨询式分析"},
-  {n:"sahaj-yoga-universal",c:3,l:"2026-05-31 19:49",d:"霎哈嘉瑜伽四合一"},
-  {n:"kb-deep-search",c:2,l:"2026-06-05 21:56",d:"知识库深度搜索"},
-  {n:"humanizer-zh-enhanced",c:2,l:"2026-06-05 08:09",d:"去AI痕迹"},
-  {n:"agent-browser",c:2,l:"2026-06-04 14:02",d:"浏览器自动化"},
-  {n:"sahaj-yoga-kb-protocol",c:2,l:"2026-05-31 13:23",d:"雪原灵知回应协议"},
-  {n:"frontend-design",c:2,l:"2026-05-30 14:24",d:"前端设计"},
-  {n:"积分查询",c:2,l:"2026-06-02 08:59",d:"查询 WorkBuddy 积分"},
-  {n:"headroom",c:1,l:"2026-06-05 20:39",d:"AI 上下文压缩"},
-  {n:"writing-plans",c:1,l:"2026-06-04 15:19",d:"写计划"},
-  {n:"esther-design-system",c:1,l:"2026-06-04 12:49",d:"Esther 设计系统"},
-  {n:"taste-skill",c:1,l:"2026-06-04 12:49",d:"Taste 前端设计"},
-  {n:"sahaja-rag-to-ima",c:1,l:"2026-06-03 06:57",d:"RAG→IMA迁移"},
-  {n:"clawbot-connection-fix",c:1,l:"2026-06-01 19:02",d:"Clawbot 连接修复"},
-  {n:"astro-consult-framework",c:1,l:"2026-05-31 19:49",d:"玄学咨询框架"},
-  {n:"sahaj-conversation",c:1,l:"2026-05-31 13:20",d:"霎哈嘉对话"},
-  {n:"uumit-agent",c:1,l:"2026-05-31 12:54",d:"UUMit 万能平台"},
-  {n:"uumit-api-security-fix",c:1,l:"2026-05-31 12:54",d:"UUMit API 安全"},
-  {n:"uumit-static-json-api",c:1,l:"2026-05-31 12:54",d:"UUMit 静态JSON"},
-  {n:"pmframe-bmc",c:1,l:"2026-05-30 20:17",d:"商业模式画布"},
-  {n:"astro-consult-framework",c:0,l:null,d:"玄学咨询框架"},
-  {n:"business-model-craft",c:0,l:null,d:"商业模式生成"},
-  {n:"caveman",c:0,l:null,d:"超精简模式"},
-  {n:"design-an-interface",c:0,l:null,d:"接口设计探索"},
-  {n:"dispatching-parallel-agents",c:0,l:null,d:"并行代理调度"},
-  {n:"dissking",c:0,l:null,d:"磁盘管理"},
-  {n:"ecc-continuous-learning",c:0,l:null,d:"[已弃用] 持续学习v1"},
-  {n:"ecc-continuous-learning-v2",c:0,l:null,d:"持续学习v2"},
-  {n:"ecc-safety-guard",c:0,l:null,d:"安全护栏"},
-  {n:"ecc-security-review",c:0,l:null,d:"安全审查"},
-  {n:"executing-plans",c:0,l:null,d:"执行计划"},
-  {n:"finishing-a-development-branch",c:0,l:null,d:"完成分支"},
-  {n:"flowsint",c:0,l:null,d:"OSINT 调查工具"},
-  {n:"glass-project-report",c:0,l:null,d:"项目报告"},
-  {n:"grill-me",c:0,l:null,d:"需求拷问"},
-  {n:"gstack",c:0,l:null,d:"浏览器 QA 测试"},
-  {n:"hallmark",c:0,l:null,d:"反AI味设计"},
-  {n:"karpathy-guidelines",c:0,l:null,d:"Karpathy 编码准则"},
-  {n:"lobster-comm",c:0,l:null,d:"龙虾交流协议"},
-  {n:"lobster-persona",c:0,l:null,d:"龙虾角色引擎"},
-  {n:"md-reformat",c:0,l:null,d:"Markdown 重排"},
-  {n:"mem0-setup",c:0,l:null,d:"mem0 记忆系统安装"},
-  {n:"office-hours",c:0,l:null,d:"YC 办公室"},
-  {n:"pdf-to-epub",c:0,l:null,d:"PDF→EPUB转换"},
-  {n:"receiving-code-review",c:0,l:null,d:"收到代码审查"},
-  {n:"requesting-code-review",c:0,l:null,d:"请求代码审查"},
-  {n:"subagent-driven-development",c:0,l:null,d:"子代理开发"},
-  {n:"systematic-debugging",c:0,l:null,d:"系统调试"},
-  {n:"test-driven-development",c:0,l:null,d:"测试驱动开发"},
-  {n:"tdd",c:0,l:null,d:"TDD 工作流"},
-  {n:"ua-understand-chat",c:0,l:null,d:"代码问答"},
-  {n:"ua-understand-dashboard",c:0,l:null,d:"代码仪表盘"},
-  {n:"ua-understand-diff",c:0,l:null,d:"代码差异分析"},
-  {n:"ua-understand-domain",c:0,l:null,d:"业务领域提取"},
-  {n:"ua-understand-explain",c:0,l:null,d:"代码深度解释"},
-  {n:"ua-understand-knowledge",c:0,l:null,d:"知识图谱生成"},
-  {n:"ua-understand-onboard",c:0,l:null,d:"新人引导"},
-  {n:"ui-ux-pro-max",c:0,l:null,d:"UI/UX 设计"},
-  {n:"understand-anything",c:0,l:null,d:"代码理解"},
-  {n:"using-git-worktrees",c:0,l:null,d:"Git Worktree"},
-  {n:"using-superpowers",c:0,l:null,d:"超能力指南"},
-  {n:"verification-before-completion",c:0,l:null,d:"完成验证"},
-  {n:"writing-skills",c:0,l:null,d:"写技能"},
-  {n:"xhs-video-wenan",c:0,l:null,d:"小红书文案提取"},
-  {n:"zoom-out",c:0,l:null,d:"拉高视角"},
-  {n:"skill_2053081339211579392",c:0,l:null,d:"(系统skill)"},
-  {n:"skill_2053082027691548672",c:0,l:null,d:"GitHub skill"},
-  {n:"skill_2053082144792322048",c:0,l:null,d:"(系统skill)"},
-  {n:"skill_2053082488497897472",c:0,l:null,d:"(系统skill)"},
-  {n:"skill_2053082563940843521",c:0,l:null,d:"Obsidian"},
-  {n:"skill_2053082745828995072",c:0,l:null,d:"金山文档"},
-  {n:"skill_2054901635562160128",c:0,l:null,d:"GitHub Pages 部署"},
-  {n:"skill_2057443403470532608",c:0,l:null,d:"(系统skill)"},
-];
+const labels = DATA_DATE_LABELS;
+const fullLabels = DATA_DATE_FULL;
+const totalDaily = DATA_TOTAL_DAILY;
+const totalCum = DATA_TOTAL_CUMULATIVE;
+const skills = DATA_SKILLS;
 
 let currentTab = 'all';
+let ttTimer = null;
+
+// Stat cards
+function renderStats() {
+  const called = skills.filter(s=>s.t>0).length;
+  const zero = skills.filter(s=>s.t===0).length;
+  const freq = skills.filter(s=>s.t>=3).length;
+  const low = skills.filter(s=>s.t>=1&&s.t<3).length;
+  const wk = totalCum[totalCum.length-1];
+  document.getElementById('total-skills').textContent = skills.length;
+  document.getElementById('total-calls').textContent = skills.reduce((a,s)=>a+s.t,0);
+  document.getElementById('weekly-calls').textContent = wk;
+  document.getElementById('gen-date').textContent = fullLabels[fullLabels.length-1];
+  document.getElementById('stat-cards').innerHTML = `
+    <div class="stat-card"><div class="num" style="color:#30d158">${called}</div><div class="label">有调用记录</div></div>
+    <div class="stat-card"><div class="num" style="color:#ff3b30">${zero}</div><div class="label">零调用</div></div>
+    <div class="stat-card"><div class="num" style="color:#0071e3">${freq}</div><div class="label">高频 (3+)</div></div>
+    <div class="stat-card"><div class="num" style="color:#ff9f0a">${low}</div><div class="label">低频 (1-2)</div></div>
+    <div class="stat-card"><div class="num" style="color:#0071e3">${wk}</div><div class="label">本周总调用</div></div>
+  `;
+}
+
+// Cumulative chart
+function renderChart() {
+  const max = Math.max(...totalCum, 1);
+  const bar = (v,i) => {
+    const pct = (v / max * 100).toFixed(1);
+    const dpct = (totalDaily[i] / max * 100).toFixed(1);
+    return `<div class="chart-row">
+      <div class="chart-label">${labels[i]}</div>
+      <div class="chart-bars">
+        <div class="chart-bar-wrap"><div class="chart-bar cum" style="width:${pct}%"></div></div>
+      </div>
+      <div class="chart-num">${v}</div>
+    </div>`;
+  };
+  document.getElementById('chart-card').innerHTML = totalCum.map((v,i)=>bar(v,i)).join('');
+}
+
+// Tooltip
+function showTooltip(e, skill) {
+  const tt = document.getElementById('tooltip');
+  document.getElementById('tt-name').textContent = skill.n;
+  document.getElementById('tt-total').textContent = `总调用: ${skill.t} 次`;
+  const maxVal = Math.max(...skill.da, 1);
+  document.getElementById('tt-rows').innerHTML = skill.da.map((v,i) => {
+    const pct = (v / maxVal * 100).toFixed(1);
+    const fillColor = v > 0 ? '#30d158' : 'rgba(255,255,255,0.15)';
+    return `<div class="tt-row">
+      <span class="day">${labels[i]}</span>
+      <div class="tt-bar"><div class="tt-bar-fill" style="width:${pct}%;background:${fillColor}"></div></div>
+      <span class="val">${v}</span>
+    </div>`;
+  }).join('');
+  tt.classList.add('show');
+  const rect = tt.getBoundingClientRect();
+  let x = e.clientX + 12;
+  let y = e.clientY - 10;
+  if (x + rect.width > window.innerWidth - 16) x = e.clientX - rect.width - 12;
+  if (y + rect.height > window.innerHeight - 16) y = window.innerHeight - rect.height - 16;
+  if (y < 8) y = 8;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  document.getElementById('tooltip').classList.remove('show');
+}
+
+// Table render
+function filterData(tab) {
+  if(tab==='freq') return skills.filter(s=>s.t>=3);
+  if(tab==='low') return skills.filter(s=>s.t>=1&&s.t<3);
+  if(tab==='zero') return skills.filter(s=>s.t===0);
+  return skills;
+}
 
 function getDot(c) {
   if(c>=8) return '<span class="status-dot dot-green"></span>';
   if(c>=3) return '<span class="status-dot dot-orange"></span>';
-  if(c>=1) return '<span class="status-dot" style="background:#8e8e93"></span>';
+  if(c>=1) return '<span class="status-dot dot-gray"></span>';
   return '<span class="status-dot dot-red"></span>';
 }
 function getStatus(c) {
   if(c>=8) return '<span class="section-label sl-freq">高频</span>';
-  if(c>=3) return '<span class="section-label sl-low">中频</span>';
-  if(c>=1) return '<span class="section-label" style="background:rgba(142,142,147,0.12);color:#6e6e73">低频</span>';
+  if(c>=3) return '<span class="section-label sl-mid">中频</span>';
+  if(c>=1) return '<span class="section-label sl-low">低频</span>';
   return '<span class="section-label sl-zero">未用</span>';
 }
 function getCallClass(c) {
@@ -282,35 +328,40 @@ function getCallClass(c) {
   return 'call-zero';
 }
 
-function filterData(tab) {
-  if(tab==='freq') return data.filter(d=>d.c>=3);
-  if(tab==='low') return data.filter(d=>d.c>=1&&d.c<3);
-  if(tab==='zero') return data.filter(d=>d.c===0);
-  return data;
-}
-
 function render(tab) {
   currentTab = tab;
   const filtered = filterData(tab);
-  // Sort: by calls desc, then alpha
-  filtered.sort((a,b)=>b.c-a.c || a.n.localeCompare(b.n));
+  filtered.sort((a,b)=>b.t-a.t || a.n.localeCompare(b.n));
   const tbody = document.getElementById('table-body');
-  tbody.innerHTML = filtered.map((d,i)=>{
-    const num = i+1;
-    const dot = getDot(d.c);
-    const status = getStatus(d.c);
-    const cls = getCallClass(d.c);
-    const last = d.l || '—';
-    const desc = d.d || '';
-    return `<tr>
-      <td style="color:var(--text-caption);font-size:13px">${num}</td>
-      <td class="call-count ${cls}">${d.c}</td>
-      <td class="skill-name">${dot}${d.n}</td>
-      <td style="font-size:13px;color:var(--text-secondary)">${last}</td>
+  tbody.innerHTML = filtered.map((s,i)=>{
+    const wk = s.ca[s.ca.length-1] || 0;
+    const dot = getDot(s.t);
+    const status = getStatus(s.t);
+    const cls = getCallClass(s.t);
+    const desc = s.d || '';
+    const last = s.l ? s.l.slice(0,10) : '—';
+    return `<tr onmouseenter="showTooltip(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event,skills.find(x=>x.n==='${s.n}'))">
+      <td style="color:var(--text-caption);font-size:13px">${i+1}</td>
+      <td class="call-count ${cls}">${s.t}</td>
+      <td class="skill-name">${dot}${s.n}</td>
+      <td style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums">${wk}</td>
       <td>${status}</td>
       <td class="desc">${desc}</td>
     </tr>`;
   }).join('');
+}
+
+function moveTooltip(e, skill) {
+  const tt = document.getElementById('tooltip');
+  if (!tt.classList.contains('show')) { showTooltip(e, skill); return; }
+  const rect = tt.getBoundingClientRect();
+  let x = e.clientX + 12;
+  let y = e.clientY - 10;
+  if (x + rect.width > window.innerWidth - 16) x = e.clientX - rect.width - 12;
+  if (y + rect.height > window.innerHeight - 16) y = window.innerHeight - rect.height - 16;
+  if (y < 8) y = 8;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
 }
 
 function switchTab(tab) {
@@ -319,6 +370,8 @@ function switchTab(tab) {
   render(tab);
 }
 
+renderStats();
+renderChart();
 render('all');
 </script>
 </body>
