@@ -126,6 +126,11 @@
   .sl-mid{background:var(--orange-soft);color:#b86800}
   .sl-low{background:rgba(142,142,147,0.12);color:#6e6e73}
   .sl-zero{background:var(--red-soft);color:#b81b12}
+  .sl-self{background:rgba(0,113,227,0.10);color:#0058b0}
+  .sl-github{background:rgba(0,0,0,0.06);color:#555}
+  .sl-market{background:rgba(255,159,10,0.12);color:#b86800}
+  .sl-builtin{background:rgba(142,142,147,0.10);color:#6e6e73}
+  .sl-connector{background:rgba(48,209,88,0.10);color:#1a8a3a}
 
   /* Tooltip */
   .tooltip{
@@ -202,6 +207,7 @@
           <th style="width:50px">总调用</th>
           <th>技能名</th>
           <th style="width:100px">7日累计</th>
+          <th style="width:60px">来源</th>
           <th>状态</th>
           <th>说明</th>
         </tr>
@@ -240,6 +246,10 @@ function renderStats() {
   const zero = skills.filter(s=>s.t===0).length;
   const freq = skills.filter(s=>s.t>=3).length;
   const low = skills.filter(s=>s.t>=1&&s.t<3).length;
+  const selfMade = skills.filter(s=>s.s==='self-made').length;
+  const fromGitHub = skills.filter(s=>s.s==='github').length;
+  const fromMarket = skills.filter(s=>s.s==='marketplace').length;
+  const builtin = skills.filter(s=>s.s==='builtin'||s.s==='connector').length;
   const wk = totalCum[totalCum.length-1];
   document.getElementById('total-skills').textContent = skills.length;
   document.getElementById('total-calls').textContent = skills.reduce((a,s)=>a+s.t,0);
@@ -248,9 +258,9 @@ function renderStats() {
   document.getElementById('stat-cards').innerHTML = `
     <div class="stat-card"><div class="num" style="color:#30d158">${called}</div><div class="label">有调用记录</div></div>
     <div class="stat-card"><div class="num" style="color:#ff3b30">${zero}</div><div class="label">零调用</div></div>
-    <div class="stat-card"><div class="num" style="color:#0071e3">${freq}</div><div class="label">高频 (3+)</div></div>
-    <div class="stat-card"><div class="num" style="color:#ff9f0a">${low}</div><div class="label">低频 (1-2)</div></div>
-    <div class="stat-card"><div class="num" style="color:#0071e3">${wk}</div><div class="label">本周总调用</div></div>
+    <div class="stat-card"><div class="num" style="color:#0071e3">${selfMade}</div><div class="label">自制技能</div></div>
+    <div class="stat-card"><div class="num" style="color:#555">${fromGitHub}</div><div class="label">GitHub下载</div></div>
+    <div class="stat-card"><div class="num" style="color:#6e6e73">${fromMarket + builtin}</div><div class="label">市场+内置</div></div>
   `;
 }
 
@@ -321,6 +331,11 @@ function getStatus(c) {
   if(c>=1) return '<span class="section-label sl-low">低频</span>';
   return '<span class="section-label sl-zero">未用</span>';
 }
+function getSource(s) {
+  const map = {'self-made':'sl-self','github':'sl-github','marketplace':'sl-market','builtin':'sl-builtin','connector':'sl-connector'};
+  const label = {'self-made':'自制','marketplace':'市场','github':'GitHub','builtin':'内置','connector':'连接器'};
+  return `<span class="section-label ${map[s]||'sl-builtin'}">${label[s]||s}</span>`;
+}
 function getCallClass(c) {
   if(c>=8) return 'call-high';
   if(c>=3) return 'call-mid';
@@ -345,6 +360,7 @@ function render(tab) {
       <td class="call-count ${cls}">${s.t}</td>
       <td class="skill-name">${dot}${s.n}</td>
       <td style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums">${wk}</td>
+      <td>${getSource(s.s||'unknown')}</td>
       <td>${status}</td>
       <td class="desc">${desc}</td>
     </tr>`;
