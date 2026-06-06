@@ -37,17 +37,12 @@
   .header{text-align:center;padding:48px 0 40px}
   .header h1{font-size:40px;font-weight:700;letter-spacing:-0.5px}
   .header .meta{display:flex;justify-content:center;gap:24px;font-size:14px;color:var(--text-caption);margin-top:10px;flex-wrap:wrap}
-  .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:500}
-  .badge-green{background:var(--green-soft);color:#248a3d}
-  .badge-orange{background:var(--orange-soft);color:#b86800}
-  .badge-red{background:var(--red-soft);color:#b81b12}
 
   /* Stat cards */
   .grid{display:grid;gap:12px;margin-bottom:40px}
   .grid-5{grid-template-columns:repeat(5,1fr)}
-  .grid-4{grid-template-columns:repeat(4,1fr)}
-  @media(max-width:768px){.grid-5,.grid-4{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.grid-5,.grid-4{grid-template-columns:1fr}}
+  @media(max-width:768px){.grid-5{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.grid-5{grid-template-columns:1fr}}
   .stat-card{
     background:var(--surface);
     backdrop-filter:blur(40px) saturate(1.4);
@@ -78,7 +73,6 @@
   .chart-bars{flex:1;display:flex;align-items:center;gap:3px;height:28px}
   .chart-bar-wrap{flex:1;height:20px;background:rgba(0,0,0,0.04);border-radius:4px;overflow:hidden;position:relative}
   .chart-bar{height:100%;border-radius:4px;transition:width 0.6s ease;min-width:2px}
-  .chart-bar.daily{background:var(--accent);opacity:0.35}
   .chart-bar.cum{background:var(--accent)}
   .chart-num{font-size:11px;color:var(--text-secondary);width:36px;text-align:left;flex-shrink:0;font-variant-numeric:tabular-nums}
 
@@ -108,14 +102,13 @@
   th{text-align:left;padding:12px 16px;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;background:rgba(0,0,0,0.02)}
   td{padding:10px 16px;border-top:1px solid rgba(0,0,0,0.04);vertical-align:middle}
   tr:hover{background:rgba(0,0,0,0.03)}
-  tr{cursor:default}
-  .skill-name{font-weight:500}
+  .skill-name{font-weight:500;cursor:pointer}
+  .cum-cell{cursor:pointer}
   .call-count{font-weight:600;font-variant-numeric:tabular-nums}
   .call-high{color:var(--accent)}
   .call-mid{color:var(--orange)}
   .call-low{color:var(--text-caption)}
   .call-zero{color:var(--red)}
-  .desc{font-size:13px;color:var(--text-secondary);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
   .dot-green{background:var(--green)}
   .dot-orange{background:var(--orange)}
@@ -149,11 +142,12 @@
     transition:opacity 0.15s,transform 0.15s;
     z-index:100;
     min-width:220px;
+    max-width:360px;
     box-shadow:0 8px 40px rgba(0,0,0,0.3);
   }
   .tooltip.show{opacity:1;transform:translateY(0)}
-  .tooltip .tt-name{font-weight:600;font-size:15px;margin-bottom:4px}
-  .tooltip .tt-total{color:rgba(255,255,255,0.5);font-size:12px}
+  .tooltip .tt-name{font-weight:600;font-size:15px;margin-bottom:6px}
+  .tooltip .tt-body{color:rgba(255,255,255,0.65);font-size:13px;line-height:1.45}
   .tooltip .tt-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;gap:16px}
   .tooltip .tt-row .day{color:rgba(255,255,255,0.5);font-size:12px}
   .tooltip .tt-row .val{font-weight:500;font-size:13px;min-width:20px;text-align:right}
@@ -205,11 +199,10 @@
         <tr>
           <th style="width:40px">#</th>
           <th style="width:50px">总调用</th>
-          <th>技能名</th>
-          <th style="width:100px">7日累计</th>
+          <th>技能名 <span style="font-weight:400;color:var(--text-caption)">(悬停看说明)</span></th>
+          <th style="width:100px">总累计 <span style="font-weight:400;color:var(--text-caption)">(悬停看每日)</span></th>
           <th style="width:60px">来源</th>
           <th>状态</th>
-          <th>说明</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -219,9 +212,7 @@
   <!-- Tooltip -->
   <div class="tooltip" id="tooltip">
     <div class="tt-name" id="tt-name"></div>
-    <div class="tt-total" id="tt-total"></div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:6px;margin-top:8px">近7天每日调用</div>
-    <div id="tt-rows"></div>
+    <div class="tt-body" id="tt-body"></div>
   </div>
 
   <div class="footer">
@@ -239,14 +230,11 @@ const totalCum = DATA_TOTAL_CUMULATIVE;
 const skills = DATA_SKILLS;
 
 let currentTab = 'all';
-let ttTimer = null;
 
 // Stat cards
 function renderStats() {
   const called = skills.filter(s=>s.t>0).length;
   const zero = skills.filter(s=>s.t===0).length;
-  const freq = skills.filter(s=>s.t>=3).length;
-  const low = skills.filter(s=>s.t>=1&&s.t<3).length;
   const selfMade = skills.filter(s=>s.s==='self-made').length;
   const fromGitHub = skills.filter(s=>s.s==='github').length;
   const fromMarket = skills.filter(s=>s.s==='marketplace').length;
@@ -268,36 +256,45 @@ function renderStats() {
 // Cumulative chart
 function renderChart() {
   const max = Math.max(...totalCum, 1);
-  const bar = (v,i) => {
-    const pct = (v / max * 100).toFixed(1);
-    const dpct = (totalDaily[i] / max * 100).toFixed(1);
-    return `<div class="chart-row">
-      <div class="chart-label">${labels[i]}</div>
-      <div class="chart-bars">
-        <div class="chart-bar-wrap"><div class="chart-bar cum" style="width:${pct}%"></div></div>
-      </div>
-      <div class="chart-num">${v}</div>
-    </div>`;
-  };
-  document.getElementById('chart-card').innerHTML = totalCum.map((v,i)=>bar(v,i)).join('');
+  document.getElementById('chart-card').innerHTML = totalCum.map((v,i)=>`<div class="chart-row">
+    <div class="chart-label">${labels[i]}</div>
+    <div class="chart-bars">
+      <div class="chart-bar-wrap"><div class="chart-bar cum" style="width:${(v/max*100).toFixed(1)}%"></div></div>
+    </div>
+    <div class="chart-num">${v}</div>
+  </div>`).join('');
 }
 
-// Tooltip
-function showTooltip(e, skill) {
+// Tooltip - two modes
+function showTooltipDesc(e, skill) {
   const tt = document.getElementById('tooltip');
   document.getElementById('tt-name').textContent = skill.n;
-  document.getElementById('tt-total').textContent = `总调用: ${skill.t} 次`;
+  document.getElementById('tt-body').innerHTML = skill.d || '无说明';
+  tt.classList.add('show');
+  positionTooltip(e, tt);
+}
+
+function showTooltipDaily(e, skill) {
+  const tt = document.getElementById('tooltip');
+  document.getElementById('tt-name').textContent = `近7天每日调用 · ${skill.n}`;
   const maxVal = Math.max(...skill.da, 1);
-  document.getElementById('tt-rows').innerHTML = skill.da.map((v,i) => {
+  document.getElementById('tt-body').innerHTML = skill.da.map((v,i)=>{
     const pct = (v / maxVal * 100).toFixed(1);
-    const fillColor = v > 0 ? '#30d158' : 'rgba(255,255,255,0.15)';
     return `<div class="tt-row">
       <span class="day">${labels[i]}</span>
-      <div class="tt-bar"><div class="tt-bar-fill" style="width:${pct}%;background:${fillColor}"></div></div>
+      <div class="tt-bar"><div class="tt-bar-fill" style="width:${pct}%;background:${v>0?'#30d158':'rgba(255,255,255,0.15)'}"></div></div>
       <span class="val">${v}</span>
     </div>`;
   }).join('');
   tt.classList.add('show');
+  positionTooltip(e, tt);
+}
+
+function hideTooltip() {
+  document.getElementById('tooltip').classList.remove('show');
+}
+
+function positionTooltip(e, tt) {
   const rect = tt.getBoundingClientRect();
   let x = e.clientX + 12;
   let y = e.clientY - 10;
@@ -306,10 +303,6 @@ function showTooltip(e, skill) {
   if (y < 8) y = 8;
   tt.style.left = x + 'px';
   tt.style.top = y + 'px';
-}
-
-function hideTooltip() {
-  document.getElementById('tooltip').classList.remove('show');
 }
 
 // Table render
@@ -333,9 +326,9 @@ function getStatus(c) {
   return '<span class="section-label sl-zero">未用</span>';
 }
 function getSource(s) {
-  const map = {'self-made':'sl-self','github':'sl-github','marketplace':'sl-market','builtin':'sl-builtin','connector':'sl-connector'};
-  const label = {'self-made':'自制','marketplace':'市场','github':'GitHub','builtin':'内置','connector':'连接器'};
-  return `<span class="section-label ${map[s]||'sl-builtin'}">${label[s]||s}</span>`;
+  const m={'self-made':'sl-self','github':'sl-github','marketplace':'sl-market','builtin':'sl-builtin','connector':'sl-connector'};
+  const l={'self-made':'自制','marketplace':'市场','github':'GitHub','builtin':'内置','connector':'连接器'};
+  return `<span class="section-label ${m[s]||'sl-builtin'}">${l[s]||s}</span>`;
 }
 function getCallClass(c) {
   if(c>=8) return 'call-high';
@@ -348,37 +341,25 @@ function render(tab) {
   currentTab = tab;
   const filtered = filterData(tab);
   filtered.sort((a,b)=>b.t-a.t || a.n.localeCompare(b.n));
-  const tbody = document.getElementById('table-body');
-  tbody.innerHTML = filtered.map((s,i)=>{
-    const wk = s.ca[s.ca.length-1] || 0;
+  document.getElementById('table-body').innerHTML = filtered.map((s,i)=>{
     const dot = getDot(s.t);
     const status = getStatus(s.t);
     const cls = getCallClass(s.t);
-    const desc = s.d || '';
-    const last = s.l ? s.l.slice(0,10) : '—';
-    return `<tr onmouseenter="showTooltip(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event,skills.find(x=>x.n==='${s.n}'))">
+    return `<tr>
       <td style="color:var(--text-caption);font-size:13px">${i+1}</td>
       <td class="call-count ${cls}">${s.t}</td>
-      <td class="skill-name">${dot}${s.n}</td>
-      <td style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums">${wk}</td>
+      <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${dot}${s.n}</td>
+      <td class="cum-cell" style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums" onmouseenter="showTooltipDaily(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.t}</td>
       <td>${getSource(s.s||'unknown')}</td>
       <td>${status}</td>
-      <td class="desc">${desc}</td>
     </tr>`;
   }).join('');
 }
 
-function moveTooltip(e, skill) {
+function moveTooltip(e) {
   const tt = document.getElementById('tooltip');
-  if (!tt.classList.contains('show')) { showTooltip(e, skill); return; }
-  const rect = tt.getBoundingClientRect();
-  let x = e.clientX + 12;
-  let y = e.clientY - 10;
-  if (x + rect.width > window.innerWidth - 16) x = e.clientX - rect.width - 12;
-  if (y + rect.height > window.innerHeight - 16) y = window.innerHeight - rect.height - 16;
-  if (y < 8) y = 8;
-  tt.style.left = x + 'px';
-  tt.style.top = y + 'px';
+  if (!tt.classList.contains('show')) return;
+  positionTooltip(e, tt);
 }
 
 function switchTab(tab) {
