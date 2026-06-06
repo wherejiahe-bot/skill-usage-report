@@ -152,8 +152,9 @@
     box-shadow:0 8px 40px rgba(0,0,0,0.3);
   }
   .tooltip.show{opacity:1;transform:translateY(0)}
-  .tooltip .tt-name{font-weight:600;font-size:15px;margin-bottom:8px}
-  .tooltip .tt-total{color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:6px}
+  .tooltip .tt-name{font-weight:600;font-size:15px;margin-bottom:4px}
+  .tooltip .tt-total{color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:2px}
+  .tooltip .tt-desc{color:rgba(255,255,255,0.6);font-size:12px;line-height:1.4;margin-bottom:4px}
   .tooltip .tt-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;gap:16px}
   .tooltip .tt-row .day{color:rgba(255,255,255,0.5);font-size:12px}
   .tooltip .tt-row .val{font-weight:500;font-size:13px;min-width:20px;text-align:right}
@@ -220,6 +221,9 @@
   <div class="tooltip" id="tooltip">
     <div class="tt-name" id="tt-name"></div>
     <div class="tt-total" id="tt-total"></div>
+    <div class="tt-desc" id="tt-desc"></div>
+    <div style="height:1px;background:rgba(255,255,255,0.08);margin:8px 0" id="tt-divider"></div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:6px" id="tt-daily-label">近7天每日调用</div>
     <div id="tt-rows"></div>
   </div>
 
@@ -286,6 +290,9 @@ function showTooltip(e, skill) {
   const tt = document.getElementById('tooltip');
   document.getElementById('tt-name').textContent = skill.n;
   document.getElementById('tt-total').textContent = `总调用: ${skill.t} 次`;
+  const desc = skill.d || '';
+  document.getElementById('tt-desc').textContent = desc;
+  document.getElementById('tt-desc').style.display = desc ? 'block' : 'none';
   const maxVal = Math.max(...skill.da, 1);
   document.getElementById('tt-rows').innerHTML = skill.da.map((v,i) => {
     const pct = (v / maxVal * 100).toFixed(1);
