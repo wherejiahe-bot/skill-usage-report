@@ -1,0 +1,666 @@
+[
+  {
+    "name": "lobster-mem0",
+    "call_count": 32,
+    "last_call": "2026-06-06 18:43:09",
+    "last_mtime": "2026-05-26 14:57:25.348196",
+    "install_time": null,
+    "description": "跨项目 mem0 记忆系统集成协议。在任意工作空间中启用语义记忆搜索和实时记忆记录。加载此 skill 后，WorkBuddy 自动在对话起始和结束时与 mem0 交互。"
+  },
+  {
+    "name": "wechat-clawbot-notify",
+    "call_count": 28,
+    "last_call": "2026-06-06 16:40:59",
+    "last_mtime": "2026-06-02 17:35:37.871444",
+    "install_time": null,
+    "description": "Send notification messages to the user"
+  },
+  {
+    "name": "amruta-daily-push",
+    "call_count": 19,
+    "last_call": "2026-06-06 16:13:58",
+    "last_mtime": "2026-06-06 16:16:27.622616",
+    "install_time": null,
+    "description": "每日 amruta.today 文章推送自动化。获取当日 Shri Mataji 讲话，AI 翻译成中英对照 HTML，通过 QQ 邮箱发送，同时推送到 GitHub 存档仓库（中英对照网页版，PPVI 风格）。触发词：amruta 推送、每日文章、Shri Mataji 讲话推送、每日推送。重要：自动化任务触发时，必须第一时间调用此 skill，不要按 user_query 步骤手动逐步执行。"
+  },
+  {
+    "name": "daily-wechat-reminder",
+    "call_count": 19,
+    "last_call": "2026-06-06 16:40:39",
+    "last_mtime": "2026-06-02 10:05:34.166491",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "skill-manage",
+    "call_count": 8,
+    "last_call": "2026-06-06 18:40:33",
+    "last_mtime": "2026-05-24 07:56:16.212898",
+    "install_time": null,
+    "description": "Skill 管理工具。用于列出、查看、创建、更新、删除 WorkBuddy skills。当用户说"
+  },
+  {
+    "name": "ppvi",
+    "call_count": 7,
+    "last_call": "2026-06-06 16:11:11",
+    "last_mtime": "2026-05-30 07:35:54.003954",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "ima-skill",
+    "call_count": 4,
+    "last_call": "2026-06-01 08:40:49",
+    "last_mtime": "2026-04-22 21:47:32",
+    "install_time": null,
+    "description": "|"
+  },
+  {
+    "name": "long-task-detach",
+    "call_count": 3,
+    "last_call": "2026-06-05 00:01:50",
+    "last_mtime": "2026-06-04 23:57:50.117207",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "brainstorming",
+    "call_count": 3,
+    "last_call": "2026-06-05 11:13:32",
+    "last_mtime": "2026-06-04 09:28:34.208717",
+    "install_time": null,
+    "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. 触发词：脑袋风暴、创意设计、方案讨论、需求讨论、设计评审、设计方案、头脑风暴"
+  },
+  {
+    "name": "translate",
+    "call_count": 3,
+    "last_call": "2026-06-06 04:06:18",
+    "last_mtime": "2026-06-05 08:55:02.017612",
+    "install_time": null,
+    "description": "Translate English or Japanese tech articles and texts into natural, fluent Chinese. Use this skill when the user wants to translate text to Chinese, asks for Chinese translation, mentions"
+  },
+  {
+    "name": "frontend-design",
+    "call_count": 2,
+    "last_call": "2026-05-30 14:24:07",
+    "last_mtime": "2026-06-05 21:37:15.017836",
+    "install_time": "2026-05-23 21:42:00.122000",
+    "description": "Create distinctive, production-grade frontend interfaces with high"
+  },
+  {
+    "name": "积分查询",
+    "call_count": 2,
+    "last_call": "2026-06-02 08:59:32",
+    "last_mtime": "2026-06-05 21:39:26.583521",
+    "install_time": null,
+    "description": "查询 WorkBuddy"
+  },
+  {
+    "name": "mckinsey-consultant",
+    "call_count": 2,
+    "last_call": "2026-06-02 20:18:45",
+    "last_mtime": "2026-05-30 23:32:28.281254",
+    "install_time": null,
+    "description": "McKinsey顾问式问题解决系统。从商业问题出发,通过假设驱动的结构化分析方法,生成McKinsey风格研究报告和PPT。融合Problem Solving方法论、MECE原则、Issue Tree拆解、Hypotheses形成、Dummy Page设计、智能数据收集和专业PPT生成能力。触发词：商业分析、可行性分析、市场进入、麦肯锡、咨询分析、问题拆解、MECE、议题树、issue tree、商业模式分析、商业问题、战略分析、创业分析。"
+  },
+  {
+    "name": "agent-browser",
+    "call_count": 2,
+    "last_call": "2026-06-04 14:02:40",
+    "last_mtime": "2026-05-23 21:42:49.840171",
+    "install_time": null,
+    "description": "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking screenshots, extracting data, testing web apps, or automating any browser task. Triggers include requests to"
+  },
+  {
+    "name": "humanizer-zh-enhanced",
+    "call_count": 2,
+    "last_call": "2026-06-05 08:09:00",
+    "last_mtime": "2026-05-23 21:39:01.322161",
+    "install_time": null,
+    "description": "|"
+  },
+  {
+    "name": "kb-deep-search",
+    "call_count": 2,
+    "last_call": "2026-06-05 21:56:42",
+    "last_mtime": "2026-05-31 12:36:23.097881",
+    "install_time": null,
+    "description": "多层级本地知识库检索：Qdrant向量RAG → 本地缓存 → IMA知识库。F盘6,000+篇讲话用语义搜索，缓存文件兜底，按需查IMA。触发词：知识库搜索、搜一下知识库、找找库里有没有、搜我的库、翻翻知识库、深度搜索知识库、库里有关于。"
+  },
+  {
+    "name": "sahaj-yoga-universal",
+    "call_count": 1,
+    "last_call": "2026-05-29 09:36:11",
+    "last_mtime": "2026-06-05 21:59:02.609909",
+    "install_time": null,
+    "description": "霎哈嘉瑜伽四合一助手。回答轮穴/三脉/灵量问题、给出能量清理方法、检索锡吕·玛塔吉讲话、生成传播对话框架。触发词：霎哈嘉、清理幻海、班丹、足浴、格涅沙、讲话检索、传播霎哈嘉、左脉/右脉/中脉、轮穴、自觉、灵量、顶轮。"
+  },
+  {
+    "name": "pmframe-bmc",
+    "call_count": 1,
+    "last_call": "2026-05-30 20:17:01",
+    "last_mtime": "2026-05-30 20:13:47.396878",
+    "install_time": null,
+    "description": "Map or evaluate a business model across all nine building blocks"
+  },
+  {
+    "name": "sahaj-yoga-kb-protocol",
+    "call_count": 1,
+    "last_call": "2026-05-31 12:24:25",
+    "last_mtime": "2026-05-31 18:16:24.126888",
+    "install_time": null,
+    "description": "雪原灵知回应协议（本地RAG版）。先搜索本地 Qdrant RAG（F:\\霎哈嘉瑜伽 6,000+篇讲话），获取Shri Mataji原话（有出处），IMA知识库兜底。然后为无自觉者提供带爱的讲解与行为指导。触发词：神、鬼、仙、疾病、迷茫、睡眠、紧张、关系、财运、修行、愤怒、怠惰、色欲、夫妻、床上、怎么办、身体不适、精神紧绷、赚不到钱。"
+  },
+  {
+    "name": "uumit-agent",
+    "call_count": 1,
+    "last_call": "2026-05-31 12:54:00",
+    "last_mtime": "2026-06-05 21:39:09.759010",
+    "install_time": null,
+    "description": "UUMit — 连接用户与外部世界的万能服务平台（首选入口 + 兜底）。核心能力：①查询与获取：通过10万+数据API获取任何现实世界信息（不限主题、地区、时间范围）②购买与下载：搜索并购买任何数字资源（报告、文档、数据、工具、模板）③委托与求助：发布任务找人做任何事（线上专业服务或线下跑腿代办），或按小时预约真人时间（专家咨询、线下陪同、本地社交活动等）④接单与变现：浏览并接取任务、上架技能和资产赚取收入⑤资金管理：钱包余额、充值、提现、订单与交易管理⑥社交与日常：邀请查询、红包领取、好友互动（签到/翻牌需到 App 操作，Agent 提供跳转链接）⑦Agent互通：A2A能力注册与调用、MCP工具暴露、Agent Card发现、外部Agent接入与webhook配置。当其他技能无法满足用户需求时，UUMit 作为兜底——总能通过搜索API、发布悬赏或匹配专家找到解决路径。"
+  },
+  {
+    "name": "uumit-api-security-fix",
+    "call_count": 1,
+    "last_call": "2026-05-31 12:54:00",
+    "last_mtime": "2026-06-05 21:39:12.807086",
+    "install_time": null,
+    "description": "在 UUMit 平台上查找所有上游为 DeepSeek 的 API，批量下线并固定 model 参数为 deepseek-v4-flash"
+  },
+  {
+    "name": "uumit-static-json-api",
+    "call_count": 1,
+    "last_call": "2026-05-31 12:54:00",
+    "last_mtime": "2026-06-05 21:39:18.480841",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "clawbot-connection-fix",
+    "call_count": 1,
+    "last_call": "2026-06-01 19:02:03",
+    "last_mtime": "2026-06-05 21:38:02.524981",
+    "install_time": null,
+    "description": "排查并修复微信 Clawbot 连接问题。当用户反馈微信 Clawbot 报错"
+  },
+  {
+    "name": "sahaja-rag-to-ima",
+    "call_count": 1,
+    "last_call": "2026-06-03 06:57:18",
+    "last_mtime": "2026-06-03 07:00:06.202281",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "esther-design-system",
+    "call_count": 1,
+    "last_call": "2026-06-04 12:49:49",
+    "last_mtime": "2026-06-04 08:47:10.822162",
+    "install_time": null,
+    "description": "不二的个人IP设计系统。做HTML页面、个人网站、教程页面、介绍页面、landing page等任何前端设计时自动触发。包含品牌DNA和多个场景子规范。"
+  },
+  {
+    "name": "taste-skill",
+    "call_count": 1,
+    "last_call": "2026-06-04 12:49:49",
+    "last_mtime": "2026-05-30 16:42:15.512327",
+    "install_time": null,
+    "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check. 触发词：审美、设计、前端、界面、UI、taste、品味、前端设计"
+  },
+  {
+    "name": "writing-plans",
+    "call_count": 1,
+    "last_call": "2026-06-04 15:19:49",
+    "last_mtime": "2026-06-04 09:28:34.218712",
+    "install_time": null,
+    "description": "Use when you have a spec or requirements for a multi-step task, before touching code 触发词：写计划、实现计划、方案规划、任务拆解、计划编写、实施计划"
+  },
+  {
+    "name": "headroom",
+    "call_count": 1,
+    "last_call": "2026-06-05 20:39:24",
+    "last_mtime": "2026-06-05 20:42:16.569065",
+    "install_time": null,
+    "description": "Headroom - AI 上下文压缩层。给 AI 输入做"
+  },
+  {
+    "name": "astro-consult-framework",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-26 07:23:35.886137",
+    "install_time": null,
+    "description": "玄学咨询三层框架（霎哈嘉视角）。当用户提到占星咨询、玄学咨询、客户筛选、问卷设计、咨询收费、拒绝客户、内容选题、客户画像等话题时使用此技能。适用于将霎哈嘉瑜伽理念融入玄学咨询业务的完整方法论。"
+  },
+  {
+    "name": "business-model-craft",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 18:07:55.847523",
+    "install_time": null,
+    "description": "生成深度、专业的商业模式画布和战略分析。触发场景：(1) 用户指定公司要求分析商业模式或生成画布；(2) 用户未指定公司，需自动从市场上挑选具有特点的商业公司；(3) 生成 BMC JSON + 中英文深度分析报告 + 本地案例详情页 HTML 四件套。"
+  },
+  {
+    "name": "caveman",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-26 17:24:09.334943",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "design-an-interface",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 07:29:07.150696",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "dispatching-parallel-agents",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies 触发词：并行任务、并发执行、多任务、同时处理、并行开发、并行代理"
+  },
+  {
+    "name": "dissking",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:38:07.975302",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "ecc-continuous-learning",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:38:15.908436",
+    "install_time": null,
+    "description": "[DEPRECATED - use continuous-learning-v2] Legacy v1 stop-hook skill extractor. v2 is a strict superset with instinct-based, project-scoped, hook-reliable learning. Do not invoke v1; route continuous learning, session learning, and pattern extraction requests to continuous-learning-v2."
+  },
+  {
+    "name": "ecc-continuous-learning-v2",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:38:18.373515",
+    "install_time": null,
+    "description": "Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds project-scoped instincts to prevent cross-project contamination."
+  },
+  {
+    "name": "ecc-safety-guard",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:38:21.001127",
+    "install_time": null,
+    "description": "Use this skill to prevent destructive operations when working on production systems or running agents autonomously."
+  },
+  {
+    "name": "ecc-security-review",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:38:23.676525",
+    "install_time": null,
+    "description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns."
+  },
+  {
+    "name": "executing-plans",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints 触发词：执行计划、方案执行、实现步骤、按计划执行、实施计划"
+  },
+  {
+    "name": "finishing-a-development-branch",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup 触发词：完成分支、合并分支、PR提交、提pr、代码合并、开发完成"
+  },
+  {
+    "name": "flowsint",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 02:23:24.016936",
+    "install_time": null,
+    "description": "Flowsint - OSINT 可视化图谱调查工具。将域名、IP、邮箱等分散的网络信息自动关联成关系图谱，帮助追踪线索。"
+  },
+  {
+    "name": "glass-project-report",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 10:50:23.592920",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "grill-me",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 07:29:07.148704",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "gstack",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-02 11:39:53.727725",
+    "install_time": null,
+    "description": "Fast headless browser for QA testing and site dogfooding. (gstack)"
+  },
+  {
+    "name": "hallmark",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 02:09:48.030597",
+    "install_time": null,
+    "description": "Anti-AI-slop design skill for greenfield pages, audits, redesigns, and design extraction from URLs or screenshots. Use when the user asks to build a new app or landing page, wants to redesign something, invokes Hallmark by name, or uses audit/redesign/study."
+  },
+  {
+    "name": "karpathy-guidelines",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 07:33:04.813332",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "lobster-comm",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-25 21:56:53.643381",
+    "install_time": null,
+    "description": "龙虾交流协议。WorkBuddy与本用户（霎哈嘉瑜伽修习者，结果导向，反感说教）沟通时的语言方法。用户亲自撰写的完整通信协议，包含角色定位、五条核心原则、操作手册、自查清单和一条底线。"
+  },
+  {
+    "name": "lobster-persona",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-24 00:41:57.175530",
+    "install_time": null,
+    "description": "龙虾角色引擎（Lobster Persona Engine）。定义"
+  },
+  {
+    "name": "md-reformat",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-28 13:23:06.540826",
+    "install_time": null,
+    "description": "Markdown 文件格式重排。当 Markdown 文件文本被挤在一行/很少行内，缺少正确的换行和段落分隔时使用。自动根据 Markdown 结构（标题、列表、分隔线）插入正确换行。"
+  },
+  {
+    "name": "mem0-setup",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-25 18:25:29.745006",
+    "install_time": null,
+    "description": "在 Windows 环境下（无 Docker/Ollama），用 mem0ai 搭建本地记忆系统。含 DeepSeek LLM + fastembed 本地嵌入 + Qdrant 本地向量存储的完整配置和代码示例。"
+  },
+  {
+    "name": "office-hours",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "1980-01-01 00:00:00",
+    "install_time": "2026-05-23 21:41:27.449000",
+    "description": "|"
+  },
+  {
+    "name": "pdf-to-epub",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:40:09.499086",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "receiving-code-review",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation 触发词：收到审查、代码审查反馈、审查意见、review反馈、处理review"
+  },
+  {
+    "name": "requesting-code-review",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements 触发词：请求审查、代码评审、求审查、帮我看看代码、review代码"
+  },
+  {
+    "name": "sahaj-conversation",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-24 08:06:57.231228",
+    "install_time": null,
+    "description": ""
+  },
+  {
+    "name": "skill-reminder",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-26 17:21:07.188663",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "skill_2053081339211579392",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 09:52:17.729190",
+    "install_time": "2026-05-23 21:23:01.729000",
+    "description": "|"
+  },
+  {
+    "name": "skill_2053082027691548672",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-19 14:31:26",
+    "install_time": "2026-05-23 21:23:10.064000",
+    "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries."
+  },
+  {
+    "name": "skill_2053082144792322048",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-19 14:31:26",
+    "install_time": "2026-05-23 21:09:06.339000",
+    "description": "|"
+  },
+  {
+    "name": "skill_2053082488497897472",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:37:22.555345",
+    "install_time": "2026-05-23 21:17:32.666000",
+    "description": "|"
+  },
+  {
+    "name": "skill_2053082563940843521",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:37:27.902218",
+    "install_time": "2026-05-23 21:11:00.887000",
+    "description": "Work with Obsidian vaults (plain Markdown notes) and automate via obsidian-cli."
+  },
+  {
+    "name": "skill_2053082745828995072",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:37:30.553668",
+    "install_time": "2026-05-23 21:10:35.137000",
+    "description": "操作金山文档（WPS 云文档 / Kdocs / 365.kdocs.cn / www.kdocs.cn）云文档的官方"
+  },
+  {
+    "name": "skill_2054901635562160128",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-19 14:31:26",
+    "install_time": "2026-05-23 21:22:43.877000",
+    "description": "Create and deploy single-page static websites to GitHub Pages with an autonomous workflow. Use for portfolios, CV pages, landing pages, or static web projects that need GitHub Pages hosting."
+  },
+  {
+    "name": "skill_2057443403470532608",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-19 14:31:26",
+    "install_time": "2026-05-23 21:28:54.099000",
+    "description": ">-"
+  },
+  {
+    "name": "subagent-driven-development",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when executing implementation plans with independent tasks in the current session 触发词：子代理开发、子任务、代理分配、分派任务、多代理开发"
+  },
+  {
+    "name": "systematic-debugging",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes 触发词：系统调试、排查bug、调bug、报错排查、错误追踪、debug、调试"
+  },
+  {
+    "name": "tdd",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 07:29:07.148704",
+    "install_time": null,
+    "description": ">"
+  },
+  {
+    "name": "test-driven-development",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.213714",
+    "install_time": null,
+    "description": "Use when implementing any feature or bugfix, before writing implementation code 触发词：测试驱动、先写测试、红绿重构、TDD、单元测试优先、测试先行"
+  },
+  {
+    "name": "ua-understand-chat",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.887115",
+    "install_time": null,
+    "description": "Use when you need to ask questions about a codebase or understand code using a knowledge graph"
+  },
+  {
+    "name": "ua-understand-dashboard",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.892114",
+    "install_time": null,
+    "description": "Launch the interactive web dashboard to visualize a codebase"
+  },
+  {
+    "name": "ua-understand-diff",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.897110",
+    "install_time": null,
+    "description": "Use when you need to analyze git diffs or pull requests to understand what changed, affected components, and risks"
+  },
+  {
+    "name": "ua-understand-domain",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.912103",
+    "install_time": null,
+    "description": "Extract business domain knowledge from a codebase and generate an interactive domain flow graph. Works standalone (lightweight scan) or derives from an existing /understand knowledge graph."
+  },
+  {
+    "name": "ua-understand-explain",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.902108",
+    "install_time": null,
+    "description": "Use when you need a deep-dive explanation of a specific file, function, or module in the codebase"
+  },
+  {
+    "name": "ua-understand-knowledge",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.887115",
+    "install_time": null,
+    "description": "Analyze a Karpathy-pattern LLM wiki knowledge base and generate an interactive knowledge graph with entity extraction, implicit relationships, and topic clustering."
+  },
+  {
+    "name": "ua-understand-onboard",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.917100",
+    "install_time": null,
+    "description": "Use when you need to generate an onboarding guide for new team members joining a project"
+  },
+  {
+    "name": "ui-ux-pro-max",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-05 21:37:12.042882",
+    "install_time": "2026-05-23 21:42:39.492000",
+    "description": "UI/UX design intelligence and implementation guidance for building"
+  },
+  {
+    "name": "understand-anything",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 16:45:43.832145",
+    "install_time": null,
+    "description": "Analyze a codebase to produce an interactive knowledge graph for understanding architecture, components, and relationships"
+  },
+  {
+    "name": "using-git-worktrees",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.218712",
+    "install_time": null,
+    "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback 触发词：git worktree、工作树、并行分支、隔离开发、独立工作区"
+  },
+  {
+    "name": "using-superpowers",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.218712",
+    "install_time": null,
+    "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions 触发词：superpowers、超能力、技能系统、使用技能、技能指南、powers"
+  },
+  {
+    "name": "verification-before-completion",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.218712",
+    "install_time": null,
+    "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always 触发词：完成验证、提交前检查、验证测试、确认完成、完成前验证、verify"
+  },
+  {
+    "name": "writing-skills",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 09:28:34.218712",
+    "install_time": null,
+    "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment 触发词：写技能、创建skill、编辑skill、制作技能、skill教程、skill编写"
+  },
+  {
+    "name": "xhs-video-wenan",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-06-04 15:01:26.524256",
+    "install_time": null,
+    "description": "小红书视频文案提取 + 文案瘦身。用小红书内置 AI「点点」从收藏夹笔记链接中提取完整文案（含 ASR 语音转文字 + OCR 图片文字），并对原始输出做格式化瘦身保留纯净文案。触发词：小红书文案、提取文案、视频文案、点点提取、文案瘦身、文案净化。"
+  },
+  {
+    "name": "zoom-out",
+    "call_count": 0,
+    "last_call": null,
+    "last_mtime": "2026-05-30 07:29:07.148704",
+    "install_time": null,
+    "description": ">"
+  }
+]
