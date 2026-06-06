@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorkBuddy Skill Usage Report</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --surface: rgba(255,255,255,0.72);
+    --surface-border: rgba(255,255,255,0.6);
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-caption: #8e8e93;
+    --accent: #0071e3;
+    --accent-soft: rgba(0,113,227,0.08);
+    --green: #30d158;
+    --green-soft: rgba(48,209,88,0.12);
+    --orange: #ff9f0a;
+    --orange-soft: rgba(255,159,10,0.12);
+    --red: #ff3b30;
+    --red-soft: rgba(255,59,48,0.10);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Helvetica Neue",sans-serif;
+    background:var(--bg);color:var(--text-primary);
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;overflow-wrap:anywhere;
+    padding:0 24px;
+  }
+  .page{max-width:960px;margin:0 auto;padding:48px 0 96px}
+
+  /* Header */
+  .header{text-align:center;padding:64px 0 48px}
+  .header .meta{display:flex;justify-content:center;gap:24px;font-size:14px;color:var(--text-caption);margin-top:12px;flex-wrap:wrap}
+  .header .meta span{display:flex;align-items:center;gap:4px}
+  .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:500}
+  .badge-green{background:var(--green-soft);color:#248a3d}
+  .badge-orange{background:var(--orange-soft);color:#b86800}
+  .badge-red{background:var(--red-soft);color:#b81b12}
+
+  /* Section */
+  .section{margin-bottom:48px}
+  .section-title{font-size:20px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .section-title .count{font-size:14px;font-weight:400;color:var(--text-caption);background:var(--surface);padding:2px 10px;border-radius:20px}
+
+  /* Card grid */
+  .grid{display:grid;gap:12px}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:768px){.grid-4,.grid-3,.grid-2{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+
+  /* Stat card */
+  .stat-card{
+    background:var(--surface);
+    backdrop-filter:blur(40px) saturate(1.4);
+    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    border:1px solid var(--surface-border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    text-align:center;
+  }
+  .stat-card .num{font-size:36px;font-weight:700;line-height:1.1}
+  .stat-card .label{font-size:13px;color:var(--text-caption);margin-top:4px}
+
+  /* Table */
+  .table-wrap{
+    background:var(--surface);
+    backdrop-filter:blur(40px) saturate(1.4);
+    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    border:1px solid var(--surface-border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;padding:14px 16px;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;background:rgba(0,0,0,0.02)}
+  td{padding:12px 16px;border-top:1px solid rgba(0,0,0,0.04);vertical-align:middle}
+  tr:hover{background:rgba(0,0,0,0.02)}
+  .skill-name{font-weight:500}
+  .call-count{font-weight:600;font-variant-numeric:tabular-nums}
+  .call-high{color:var(--accent)}
+  .call-mid{color:var(--orange)}
+  .call-low{color:var(--text-caption)}
+  .call-zero{color:var(--red)}
+  .desc{font-size:13px;color:var(--text-secondary);max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+  .dot-green{background:var(--green)}
+  .dot-orange{background:var(--orange)}
+  .dot-red{background:var(--red)}
+  .dot-gray{background:#c7c7cc}
+
+  /* Section labels */
+  .section-label{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.3px}
+  .sl-freq{background:var(--green-soft);color:#248a3d}
+  .sl-low{background:var(--orange-soft);color:#b86800}
+  .sl-zero{background:var(--red-soft);color:#b81b12}
+
+  /* Footer */
+  .footer{text-align:center;padding:32px 0;font-size:13px;color:var(--text-caption)}
+  .footer a{color:var(--accent);text-decoration:none}
+  .footer a:hover{text-decoration:underline}
+
+  /* Tabs */
+  .tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .tab-btn{
+    padding:8px 18px;border-radius:20px;border:none;
+    font-size:14px;font-weight:500;cursor:pointer;
+    background:var(--surface);color:var(--text-secondary);
+    transition:all 0.2s;
+  }
+  .tab-btn:hover{background:var(--accent-soft);color:var(--accent)}
+  .tab-btn.active{background:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+<div class="page" id="app">
+
+  <!-- Header -->
+  <div class="header">
+    <h1 style="font-size:40px;font-weight:700;letter-spacing:-0.5px">Skill Usage Report</h1>
+    <p style="font-size:16px;color:var(--text-secondary);margin-top:8px">WorkBuddy 技能使用情况统计</p>
+    <div class="meta">
+      <span>📅 2026-06-06 18:50</span>
+      <span>📊 83 skills</span>
+      <span>🔍 150 calls logged</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-4" style="margin-bottom:48px">
+    <div class="stat-card"><div class="num" style="color:var(--green)">28</div><div class="label">有调用记录</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">55</div><div class="label">零调用</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--accent)">10</div><div class="label">高频 (3次+)</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--orange)">18</div><div class="label">低频 (1-2次)</div></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('all')">全部</button>
+    <button class="tab-btn" onclick="switchTab('freq')">高频</button>
+    <button class="tab-btn" onclick="switchTab('low')">低频</button>
+    <button class="tab-btn" onclick="switchTab('zero')">零调用</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap" id="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:50px">#</th>
+          <th style="width:60px">调用</th>
+          <th>技能名</th>
+          <th>最后调用</th>
+          <th>状态</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <p>数据来源：WorkBuddy 日志文件（2026-05-22 至 2026-06-06，~4GB）</p>
+    <p><a href="https://github.com/wherejiahe-bot/skill-usage-report">GitHub 仓库</a></p>
+  </div>
+</div>
+
+<script>
+const data = [
+  {n:"lobster-mem0",c:32,l:"2026-06-06 18:43",d:"跨项目 mem0 记忆系统集成协议"},
+  {n:"wechat-clawbot-notify",c:28,l:"2026-06-06 16:40",d:"微信通知推送"},
+  {n:"amruta-daily-push",c:19,l:"2026-06-06 16:13",d:"每日 Shri Mataji 文章推送"},
+  {n:"daily-wechat-reminder",c:19,l:"2026-06-06 16:40",d:"每日微信提醒"},
+  {n:"skill-manage",c:9,l:"2026-06-06 18:40",d:"Skill 管理工具"},
+  {n:"ppvi",c:8,l:"2026-06-06 16:11",d:"拼拼视觉美学 PPVI"},
+  {n:"ima-skill",c:4,l:"2026-06-01 08:40",d:"IMA 知识库管理"},
+  {n:"translate",c:3,l:"2026-06-06 04:06",d:"翻译技能"},
+  {n:"brainstorming",c:3,l:"2026-06-05 11:13",d:"头脑风暴"},
+  {n:"long-task-detach",c:3,l:"2026-06-05 00:01",d:"长任务分离"},
+  {n:"mckinsey-consultant",c:3,l:"2026-06-02 20:18",d:"麦肯锡咨询式分析"},
+  {n:"sahaj-yoga-universal",c:3,l:"2026-05-31 19:49",d:"霎哈嘉瑜伽四合一"},
+  {n:"kb-deep-search",c:2,l:"2026-06-05 21:56",d:"知识库深度搜索"},
+  {n:"humanizer-zh-enhanced",c:2,l:"2026-06-05 08:09",d:"去AI痕迹"},
+  {n:"agent-browser",c:2,l:"2026-06-04 14:02",d:"浏览器自动化"},
+  {n:"sahaj-yoga-kb-protocol",c:2,l:"2026-05-31 13:23",d:"雪原灵知回应协议"},
+  {n:"frontend-design",c:2,l:"2026-05-30 14:24",d:"前端设计"},
+  {n:"积分查询",c:2,l:"2026-06-02 08:59",d:"查询 WorkBuddy 积分"},
+  {n:"headroom",c:1,l:"2026-06-05 20:39",d:"AI 上下文压缩"},
+  {n:"writing-plans",c:1,l:"2026-06-04 15:19",d:"写计划"},
+  {n:"esther-design-system",c:1,l:"2026-06-04 12:49",d:"Esther 设计系统"},
+  {n:"taste-skill",c:1,l:"2026-06-04 12:49",d:"Taste 前端设计"},
+  {n:"sahaja-rag-to-ima",c:1,l:"2026-06-03 06:57",d:"RAG→IMA迁移"},
+  {n:"clawbot-connection-fix",c:1,l:"2026-06-01 19:02",d:"Clawbot 连接修复"},
+  {n:"astro-consult-framework",c:1,l:"2026-05-31 19:49",d:"玄学咨询框架"},
+  {n:"sahaj-conversation",c:1,l:"2026-05-31 13:20",d:"霎哈嘉对话"},
+  {n:"uumit-agent",c:1,l:"2026-05-31 12:54",d:"UUMit 万能平台"},
+  {n:"uumit-api-security-fix",c:1,l:"2026-05-31 12:54",d:"UUMit API 安全"},
+  {n:"uumit-static-json-api",c:1,l:"2026-05-31 12:54",d:"UUMit 静态JSON"},
+  {n:"pmframe-bmc",c:1,l:"2026-05-30 20:17",d:"商业模式画布"},
+  {n:"astro-consult-framework",c:0,l:null,d:"玄学咨询框架"},
+  {n:"business-model-craft",c:0,l:null,d:"商业模式生成"},
+  {n:"caveman",c:0,l:null,d:"超精简模式"},
+  {n:"design-an-interface",c:0,l:null,d:"接口设计探索"},
+  {n:"dispatching-parallel-agents",c:0,l:null,d:"并行代理调度"},
+  {n:"dissking",c:0,l:null,d:"磁盘管理"},
+  {n:"ecc-continuous-learning",c:0,l:null,d:"[已弃用] 持续学习v1"},
+  {n:"ecc-continuous-learning-v2",c:0,l:null,d:"持续学习v2"},
+  {n:"ecc-safety-guard",c:0,l:null,d:"安全护栏"},
+  {n:"ecc-security-review",c:0,l:null,d:"安全审查"},
+  {n:"executing-plans",c:0,l:null,d:"执行计划"},
+  {n:"finishing-a-development-branch",c:0,l:null,d:"完成分支"},
+  {n:"flowsint",c:0,l:null,d:"OSINT 调查工具"},
+  {n:"glass-project-report",c:0,l:null,d:"项目报告"},
+  {n:"grill-me",c:0,l:null,d:"需求拷问"},
+  {n:"gstack",c:0,l:null,d:"浏览器 QA 测试"},
+  {n:"hallmark",c:0,l:null,d:"反AI味设计"},
+  {n:"karpathy-guidelines",c:0,l:null,d:"Karpathy 编码准则"},
+  {n:"lobster-comm",c:0,l:null,d:"龙虾交流协议"},
+  {n:"lobster-persona",c:0,l:null,d:"龙虾角色引擎"},
+  {n:"md-reformat",c:0,l:null,d:"Markdown 重排"},
+  {n:"mem0-setup",c:0,l:null,d:"mem0 记忆系统安装"},
+  {n:"office-hours",c:0,l:null,d:"YC 办公室"},
+  {n:"pdf-to-epub",c:0,l:null,d:"PDF→EPUB转换"},
+  {n:"receiving-code-review",c:0,l:null,d:"收到代码审查"},
+  {n:"requesting-code-review",c:0,l:null,d:"请求代码审查"},
+  {n:"subagent-driven-development",c:0,l:null,d:"子代理开发"},
+  {n:"systematic-debugging",c:0,l:null,d:"系统调试"},
+  {n:"test-driven-development",c:0,l:null,d:"测试驱动开发"},
+  {n:"tdd",c:0,l:null,d:"TDD 工作流"},
+  {n:"ua-understand-chat",c:0,l:null,d:"代码问答"},
+  {n:"ua-understand-dashboard",c:0,l:null,d:"代码仪表盘"},
+  {n:"ua-understand-diff",c:0,l:null,d:"代码差异分析"},
+  {n:"ua-understand-domain",c:0,l:null,d:"业务领域提取"},
+  {n:"ua-understand-explain",c:0,l:null,d:"代码深度解释"},
+  {n:"ua-understand-knowledge",c:0,l:null,d:"知识图谱生成"},
+  {n:"ua-understand-onboard",c:0,l:null,d:"新人引导"},
+  {n:"ui-ux-pro-max",c:0,l:null,d:"UI/UX 设计"},
+  {n:"understand-anything",c:0,l:null,d:"代码理解"},
+  {n:"using-git-worktrees",c:0,l:null,d:"Git Worktree"},
+  {n:"using-superpowers",c:0,l:null,d:"超能力指南"},
+  {n:"verification-before-completion",c:0,l:null,d:"完成验证"},
+  {n:"writing-skills",c:0,l:null,d:"写技能"},
+  {n:"xhs-video-wenan",c:0,l:null,d:"小红书文案提取"},
+  {n:"zoom-out",c:0,l:null,d:"拉高视角"},
+  {n:"skill_2053081339211579392",c:0,l:null,d:"(系统skill)"},
+  {n:"skill_2053082027691548672",c:0,l:null,d:"GitHub skill"},
+  {n:"skill_2053082144792322048",c:0,l:null,d:"(系统skill)"},
+  {n:"skill_2053082488497897472",c:0,l:null,d:"(系统skill)"},
+  {n:"skill_2053082563940843521",c:0,l:null,d:"Obsidian"},
+  {n:"skill_2053082745828995072",c:0,l:null,d:"金山文档"},
+  {n:"skill_2054901635562160128",c:0,l:null,d:"GitHub Pages 部署"},
+  {n:"skill_2057443403470532608",c:0,l:null,d:"(系统skill)"},
+];
+
+let currentTab = 'all';
+
+function getDot(c) {
+  if(c>=8) return '<span class="status-dot dot-green"></span>';
+  if(c>=3) return '<span class="status-dot dot-orange"></span>';
+  if(c>=1) return '<span class="status-dot" style="background:#8e8e93"></span>';
+  return '<span class="status-dot dot-red"></span>';
+}
+function getStatus(c) {
+  if(c>=8) return '<span class="section-label sl-freq">高频</span>';
+  if(c>=3) return '<span class="section-label sl-low">中频</span>';
+  if(c>=1) return '<span class="section-label" style="background:rgba(142,142,147,0.12);color:#6e6e73">低频</span>';
+  return '<span class="section-label sl-zero">未用</span>';
+}
+function getCallClass(c) {
+  if(c>=8) return 'call-high';
+  if(c>=3) return 'call-mid';
+  if(c>=1) return 'call-low';
+  return 'call-zero';
+}
+
+function filterData(tab) {
+  if(tab==='freq') return data.filter(d=>d.c>=3);
+  if(tab==='low') return data.filter(d=>d.c>=1&&d.c<3);
+  if(tab==='zero') return data.filter(d=>d.c===0);
+  return data;
+}
+
+function render(tab) {
+  currentTab = tab;
+  const filtered = filterData(tab);
+  // Sort: by calls desc, then alpha
+  filtered.sort((a,b)=>b.c-a.c || a.n.localeCompare(b.n));
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = filtered.map((d,i)=>{
+    const num = i+1;
+    const dot = getDot(d.c);
+    const status = getStatus(d.c);
+    const cls = getCallClass(d.c);
+    const last = d.l || '—';
+    const desc = d.d || '';
+    return `<tr>
+      <td style="color:var(--text-caption);font-size:13px">${num}</td>
+      <td class="call-count ${cls}">${d.c}</td>
+      <td class="skill-name">${dot}${d.n}</td>
+      <td style="font-size:13px;color:var(--text-secondary)">${last}</td>
+      <td>${status}</td>
+      <td class="desc">${desc}</td>
+    </tr>`;
+  }).join('');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.tab-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
+  render(tab);
+}
+
+render('all');
+</script>
+</body>
+</html>
