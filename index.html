@@ -311,7 +311,7 @@ function filterData(tab) {
 
 function getStatus(st) {
   if(st==='已合并') return '<span class="section-label sl-merged">已合并</span>';
-  if(st==='火热使用') return '<span class="section-label sl-hot">火热使用</span>';
+  if(st==='经常使用') return '<span class="section-label sl-hot">经常使用</span>';
   if(st==='建议保留') return '<span class="section-label sl-keep">建议保留</span>';
   if(st==='建议删除') return '<span class="section-label sl-remove">建议删除</span>';
   if(st==='已删除') return '<span class="section-label sl-deleted">已删除</span>';
@@ -319,14 +319,14 @@ function getStatus(st) {
 }
 
 function getStatusDot(st) {
-  if(st==='火热使用') return '<span class="sdot sdot-hot"></span>';
+  if(st==='经常使用') return '<span class="sdot sdot-hot"></span>';
   if(st==='建议保留') return '<span class="sdot sdot-keep"></span>';
   if(st==='建议删除') return '<span class="sdot sdot-remove"></span>';
   return '<span class="sdot sdot-done"></span>';
 }
 
 function statusRank(st) {
-  if(st==='火热使用') return 1;
+  if(st==='经常使用') return 1;
   if(st==='建议保留') return 2;
   if(st==='建议删除') return 3;
   if(st==='已删除') return 4;
