@@ -109,16 +109,12 @@
   .skill-name{font-weight:500;cursor:pointer}
   .cum-cell{cursor:pointer}
   .call-count{font-weight:600;font-variant-numeric:tabular-nums}
-  .call-high{color:var(--accent)}
-  .call-mid{color:var(--orange)}
-  .call-low{color:var(--text-caption)}
-  .call-zero{color:var(--red)}
   .section-label{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
   .sl-hot{background:rgba(48,209,88,0.12);color:#248a3d}
-  .sl-keep{background:var(--orange-soft);color:#b86800}
+  .sl-keep{background:rgba(0,113,227,0.10);color:#0058b0}
   .sl-remove{background:var(--red-soft);color:#b81b12}
   .sl-deleted{background:rgba(142,142,147,0.12);color:#8e8e93;text-decoration:line-through}
-  .sl-merged{background:rgba(48,209,88,0.08);color:#248a3d;border:1px dashed rgba(48,209,88,0.3)}
+  .sl-merged{background:rgba(142,142,147,0.10);color:#8e8e93}
   /* 状态色块（技能名前） */
   .sdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
   .sdot-hot{background:#30d158}
@@ -190,13 +186,8 @@
     <div class="chart-card" id="chart-card"></div>
   </div>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('all')">全部</button>
-    <button class="tab-btn" onclick="switchTab('freq')">高频 (3+)</button>
-    <button class="tab-btn" onclick="switchTab('low')">低频 (1-2)</button>
-    <button class="tab-btn" onclick="switchTab('zero')">零调用</button>
-  </div>
+  <!-- 全部按钮（默认） -->
+  <input type="hidden" id="current-tab" value="all">
 
   <!-- Table -->
   <div class="table-wrap">
@@ -315,9 +306,6 @@ function positionTooltip(e, tt) {
 
 // Table render
 function filterData(tab) {
-  if(tab==='freq') return skills.filter(s=>s.t>=3);
-  if(tab==='low') return skills.filter(s=>s.t>=1&&s.t<3);
-  if(tab==='zero') return skills.filter(s=>s.t===0);
   return skills;
 }
 
@@ -330,22 +318,19 @@ function getStatus(st) {
   return `<span class="section-label">${st}</span>`;
 }
 
-// 技能名前面的色块，颜色与状态一致
 function getStatusDot(st) {
   if(st==='火热使用') return '<span class="sdot sdot-hot"></span>';
   if(st==='建议保留') return '<span class="sdot sdot-keep"></span>';
   if(st==='建议删除') return '<span class="sdot sdot-remove"></span>';
-  if(st==='已合并'||st==='已删除') return '<span class="sdot sdot-done"></span>';
   return '<span class="sdot sdot-done"></span>';
 }
 
-// 状态排序优先级
 function statusRank(st) {
   if(st==='火热使用') return 1;
   if(st==='建议保留') return 2;
-  if(st==='已合并') return 3;
-  if(st==='建议删除') return 4;
-  if(st==='已删除') return 5;
+  if(st==='建议删除') return 3;
+  if(st==='已删除') return 4;
+  if(st==='已合并') return 5;
   return 9;
 }
 function getSource(s) {
@@ -353,16 +338,9 @@ function getSource(s) {
   const l={'self-made':'自制','marketplace':'市场','github':'GitHub','builtin':'内置','connector':'连接器'};
   return `<span class="section-label ${m[s]||'sl-builtin'}">${l[s]||s}</span>`;
 }
-function getCallClass(c) {
-  if(c>=8) return 'call-high';
-  if(c>=3) return 'call-mid';
-  if(c>=1) return 'call-low';
-  return 'call-zero';
-}
 
-function render(tab) {
-  currentTab = tab;
-  const filtered = filterData(tab);
+function render() {
+  const filtered = filterData('all');
   // 按状态优先级排序，同状态内按调用次数降序
   filtered.sort((a,b)=>{
     const ra = statusRank(a.st||'建议保留');
@@ -388,15 +366,9 @@ function moveTooltip(e) {
   positionTooltip(e, tt);
 }
 
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.tab-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
-  render(tab);
-}
-
 renderStats();
 renderChart();
-render('all');
+render();
 </script>
 </body>
 </html>
