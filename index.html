@@ -101,9 +101,8 @@
   table{width:100%;border-collapse:collapse;font-size:14px;table-layout:auto}
   th,td{white-space:nowrap}
   th:first-child,td:first-child{width:1%}
-  th:nth-child(2),td:nth-child(2){width:1%}
+  th:nth-child(4),td:nth-child(4){width:1%}
   th:nth-child(5),td:nth-child(5){width:1%}
-  th:nth-child(6),td:nth-child(6){width:1%}
   th{text-align:left;padding:12px 16px;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;background:rgba(0,0,0,0.02)}
   td{padding:10px 16px;border-top:1px solid rgba(0,0,0,0.04);vertical-align:middle}
   tr:hover{background:rgba(0,0,0,0.03)}
@@ -114,16 +113,12 @@
   .call-mid{color:var(--orange)}
   .call-low{color:var(--text-caption)}
   .call-zero{color:var(--red)}
-  .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
-  .dot-green{background:var(--green)}
-  .dot-orange{background:var(--orange)}
-  .dot-gray{background:#c7c7cc}
-  .dot-red{background:var(--red)}
   .section-label{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
-  .sl-freq{background:var(--green-soft);color:#248a3d}
-  .sl-mid{background:var(--orange-soft);color:#b86800}
-  .sl-low{background:rgba(142,142,147,0.12);color:#6e6e73}
-  .sl-zero{background:var(--red-soft);color:#b81b12}
+  .sl-hot{background:rgba(48,209,88,0.12);color:#248a3d}
+  .sl-keep{background:rgba(0,113,227,0.10);color:#0058b0}
+  .sl-建议删除{background:var(--red-soft);color:#b81b12}
+  .sl-deleted{background:rgba(142,142,147,0.12);color:#8e8e93;text-decoration:line-through}
+  .sl-merged{background:rgba(48,209,88,0.08);color:#248a3d;border:1px dashed rgba(48,209,88,0.3)}
   .sl-self{background:rgba(0,113,227,0.10);color:#0058b0}
   .sl-github{background:rgba(0,0,0,0.06);color:#555}
   .sl-market{background:rgba(255,159,10,0.12);color:#b86800}
@@ -203,9 +198,8 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>总调用</th>
           <th>技能名 <span style="font-weight:400;color:var(--text-caption);font-size:11px">(悬停看说明)</span></th>
-          <th>总累计 <span style="font-weight:400;color:var(--text-caption);font-size:11px">(悬停看每日)</span></th>
+          <th>总调用 <span style="font-weight:400;color:var(--text-caption);font-size:11px">(悬停看每日)</span></th>
           <th>来源</th>
           <th>状态</th>
         </tr>
@@ -245,6 +239,9 @@ function renderStats() {
   const fromMarket = skills.filter(s=>s.s==='marketplace').length;
   const builtin = skills.filter(s=>s.s==='builtin'||s.s==='connector').length;
   const wk = totalCum[totalCum.length-1];
+  const deleted = skills.filter(s=>s.st==='已删除').length;
+  const merged = skills.filter(s=>s.st==='已合并').length;
+  const active = skills.length - deleted - merged;
   document.getElementById('total-skills').textContent = skills.length;
   document.getElementById('total-calls').textContent = skills.reduce((a,s)=>a+s.t,0);
   document.getElementById('weekly-calls').textContent = wk;
@@ -254,7 +251,7 @@ function renderStats() {
     <div class="stat-card"><div class="num" style="color:#ff3b30">${zero}</div><div class="label">零调用</div></div>
     <div class="stat-card"><div class="num" style="color:#0071e3">${selfMade}</div><div class="label">自制技能</div></div>
     <div class="stat-card"><div class="num" style="color:#555">${fromGitHub}</div><div class="label">GitHub下载</div></div>
-    <div class="stat-card"><div class="num" style="color:#6e6e73">${fromMarket + builtin}</div><div class="label">市场+内置</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--text-caption)">${active}</div><div class="label">有效技能 ${deleted>0?`(${deleted}已删除)`:''}${merged>0?`(${merged}已合并)`:''}</div></div>
   `;
 }
 
@@ -318,17 +315,13 @@ function filterData(tab) {
   return skills;
 }
 
-function getDot(c) {
-  if(c>=8) return '<span class="status-dot dot-green"></span>';
-  if(c>=3) return '<span class="status-dot dot-orange"></span>';
-  if(c>=1) return '<span class="status-dot dot-gray"></span>';
-  return '<span class="status-dot dot-red"></span>';
-}
-function getStatus(c) {
-  if(c>=8) return '<span class="section-label sl-freq">高频</span>';
-  if(c>=3) return '<span class="section-label sl-mid">中频</span>';
-  if(c>=1) return '<span class="section-label sl-low">低频</span>';
-  return '<span class="section-label sl-zero">未用</span>';
+function getStatus(st, desc) {
+  if(st==='已合并') return `<span class="section-label sl-merged">已合并 <span style="font-weight:400;font-size:10px">${desc||''}</span></span>`;
+  if(st==='火热使用中') return '<span class="section-label sl-hot">火热使用中</span>';
+  if(st==='建议保留') return '<span class="section-label sl-keep">建议保留</span>';
+  if(st==='建议删除') return '<span class="section-label sl-建议删除">建议删除</span>';
+  if(st==='已删除') return '<span class="section-label sl-deleted">已删除</span>';
+  return `<span class="section-label">${st}</span>`;
 }
 function getSource(s) {
   const m={'self-made':'sl-self','github':'sl-github','marketplace':'sl-market','builtin':'sl-builtin','connector':'sl-connector'};
@@ -347,16 +340,12 @@ function render(tab) {
   const filtered = filterData(tab);
   filtered.sort((a,b)=>b.t-a.t || a.n.localeCompare(b.n));
   document.getElementById('table-body').innerHTML = filtered.map((s,i)=>{
-    const dot = getDot(s.t);
-    const status = getStatus(s.t);
-    const cls = getCallClass(s.t);
     return `<tr>
-      <td style="color:var(--text-caption);font-size:13px">${i+1}</td>
-      <td class="call-count ${cls}">${s.t}</td>
-      <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${dot}${s.n}</td>
+      <td style="color:var(--text-caption);font-size:13px;padding-right:8px">${i+1}</td>
+      <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.n}</td>
       <td class="cum-cell" style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums" onmouseenter="showTooltipDaily(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.t}</td>
       <td>${getSource(s.s||'unknown')}</td>
-      <td>${status}</td>
+      <td>${getStatus(s.st||'建议保留', s.d)}</td>
     </tr>`;
   }).join('');
 }
