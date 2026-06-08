@@ -199,7 +199,7 @@
         <tr>
           <th>#</th>
           <th>技能名 <span style="font-weight:400;color:var(--text-caption);font-size:11px">(悬停看说明)</span></th>
-          <th>总调用 <span style="font-weight:400;color:var(--text-caption);font-size:11px">(悬停看每日)</span></th>
+          <th>总调用</th>
           <th>来源</th>
           <th>状态</th>
         </tr>
@@ -316,7 +316,7 @@ function filterData(tab) {
 }
 
 function getStatus(st, desc) {
-  if(st==='已合并') return `<span class="section-label sl-merged">已合并 <span style="font-weight:400;font-size:10px">${desc||''}</span></span>`;
+  if(st==='已合并') return '<span class="section-label sl-merged">已合并</span>';
   if(st==='火热使用中') return '<span class="section-label sl-hot">火热使用中</span>';
   if(st==='建议保留') return '<span class="section-label sl-keep">建议保留</span>';
   if(st==='建议删除') return '<span class="section-label sl-建议删除">建议删除</span>';
@@ -345,7 +345,7 @@ function render(tab) {
       <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.n}</td>
       <td class="cum-cell" style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums" onmouseenter="showTooltipDaily(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.t}</td>
       <td>${getSource(s.s||'unknown')}</td>
-      <td>${getStatus(s.st||'建议保留', s.d)}</td>
+      <td>${getStatus(s.st||'建议保留')}</td>
     </tr>`;
   }).join('');
 }
