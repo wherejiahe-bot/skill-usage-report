@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T17:53:19.799516",
+  "generated_at": "2026-06-08T21:59:37.164816",
   "date_labels": [
     "2026-06-02",
     "2026-06-03",
@@ -19,64 +19,589 @@
     "06/08"
   ],
   "total_daily": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    10,
+    11,
+    34,
+    33,
+    29,
+    23,
+    28
   ],
   "total_cumulative": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    10,
+    21,
+    55,
+    88,
+    117,
+    140,
+    168
   ],
   "skills": [
     {
-      "name": "agent-browser",
-      "total": 0,
-      "last_call": null,
-      "description": "Browser automation CLI for AI agents. Use when the user needs to interact with w",
+      "name": "lobster-mem0",
+      "total": 47,
+      "last_call": "2026-06-08T21:47:49",
+      "description": "跨项目 mem0 记忆系统集成协议。在任意工作空间中启用语义记忆搜索和实时记忆记录。加载此 skill 后，WorkBuddy 自动在对话起始和结束时与 mem",
       "daily": {
         "2026-06-02": 0,
         "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
+        "2026-06-04": 10,
+        "2026-06-05": 6,
+        "2026-06-06": 5,
+        "2026-06-07": 6,
+        "2026-06-08": 11
       },
       "cumulative_7d": [
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0
+        10,
+        16,
+        21,
+        27,
+        38
       ],
       "daily_array": [
         0,
         0,
+        10,
+        6,
+        5,
+        6,
+        11
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "wechat-clawbot-notify",
+      "total": 43,
+      "last_call": "2026-06-08T21:47:49",
+      "description": "Send notification messages to the user",
+      "daily": {
+        "2026-06-02": 4,
+        "2026-06-03": 5,
+        "2026-06-04": 6,
+        "2026-06-05": 5,
+        "2026-06-06": 10,
+        "2026-06-07": 7,
+        "2026-06-08": 6
+      },
+      "cumulative_7d": [
+        4,
+        9,
+        15,
+        20,
+        30,
+        37,
+        43
+      ],
+      "daily_array": [
+        4,
+        5,
+        6,
+        5,
+        10,
+        7,
+        6
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "daily-wechat-reminder",
+      "total": 29,
+      "last_call": "2026-06-08T16:21:37",
+      "description": "",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 4,
+        "2026-06-04": 6,
+        "2026-06-05": 5,
+        "2026-06-06": 5,
+        "2026-06-07": 5,
+        "2026-06-08": 4
+      },
+      "cumulative_7d": [
         0,
+        4,
+        10,
+        15,
+        20,
+        25,
+        29
+      ],
+      "daily_array": [
         0,
-        0,
-        0,
-        0
+        4,
+        6,
+        5,
+        5,
+        5,
+        4
       ],
       "status": "建议使用",
       "src": "self-made"
     },
     {
       "name": "amruta-daily-push",
-      "total": 0,
-      "last_call": null,
+      "total": 15,
+      "last_call": "2026-06-08T07:07:05",
       "description": "每日 amruta.today 文章推送自动化。获取当日 Shri Mataji 讲话，AI 翻译成中英对照 HTML，通过 QQ 邮箱发送，同时推送到 Git",
+      "daily": {
+        "2026-06-02": 2,
+        "2026-06-03": 1,
+        "2026-06-04": 1,
+        "2026-06-05": 4,
+        "2026-06-06": 3,
+        "2026-06-07": 1,
+        "2026-06-08": 1
+      },
+      "cumulative_7d": [
+        2,
+        3,
+        4,
+        8,
+        11,
+        12,
+        13
+      ],
+      "daily_array": [
+        2,
+        1,
+        1,
+        4,
+        3,
+        1,
+        1
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "ppvi",
+      "total": 10,
+      "last_call": "2026-06-06T21:25:51",
+      "description": ">",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 2,
+        "2026-06-05": 2,
+        "2026-06-06": 3,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        2,
+        4,
+        7,
+        7,
+        7
+      ],
+      "daily_array": [
+        0,
+        0,
+        2,
+        2,
+        3,
+        0,
+        0
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "skill-manage",
+      "total": 10,
+      "last_call": "2026-06-08T21:25:13",
+      "description": "Skill 管理工具。用于列出、查看、创建、更新、删除 WorkBuddy skills。当用户说",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 2,
+        "2026-06-05": 3,
+        "2026-06-06": 1,
+        "2026-06-07": 0,
+        "2026-06-08": 2
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        2,
+        5,
+        6,
+        6,
+        8
+      ],
+      "daily_array": [
+        0,
+        0,
+        2,
+        3,
+        1,
+        0,
+        2
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "translate",
+      "total": 6,
+      "last_call": "2026-06-08T07:22:56",
+      "description": "Translate English or Japanese tech articles and texts into natural, fluent Chine",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 2,
+        "2026-06-06": 1,
+        "2026-06-07": 2,
+        "2026-06-08": 1
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        2,
+        3,
+        5,
+        6
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1
+      ],
+      "status": "建议保留",
+      "src": "github"
+    },
+    {
+      "name": "agent-browser",
+      "total": 3,
+      "last_call": "2026-06-07T08:35:42",
+      "description": "Browser automation CLI for AI agents. Use when the user needs to interact with w",
+      "daily": {
+        "2026-06-02": 1,
+        "2026-06-03": 0,
+        "2026-06-04": 1,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 1,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "daily_array": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "brainstorming",
+      "total": 3,
+      "last_call": "2026-06-05T11:13:32",
+      "description": "You MUST use this before any creative work - creating features, building compone",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 2,
+        "2026-06-05": 1,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        2,
+        3,
+        3,
+        3,
+        3
+      ],
+      "daily_array": [
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "long-task-detach",
+      "total": 3,
+      "last_call": "2026-06-05T00:01:50",
+      "description": "",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 1,
+        "2026-06-05": 1,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "daily_array": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "mckinsey-consultant",
+      "total": 3,
+      "last_call": "2026-06-02T20:18:45",
+      "description": "McKinsey顾问式问题解决系统。从商业问题出发,通过假设驱动的结构化分析方法,生成McKinsey风格研究报告和PPT。融合Problem Solving方",
+      "daily": {
+        "2026-06-02": 1,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "github"
+    },
+    {
+      "name": "skill-usage-updater",
+      "total": 3,
+      "last_call": "2026-06-08T21:56:51",
+      "description": "每晚22:00自动更新WorkBuddy技能使用统计，扫描日志生成每日调用数据，更新GitHub Pages网站",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 1,
+        "2026-06-07": 1,
+        "2026-06-08": 1
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        3
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "frontend-design",
+      "total": 2,
+      "last_call": "2026-05-30T14:24:07",
+      "description": "Create distinctive, production-grade frontend interfaces with high",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "builtin"
+    },
+    {
+      "name": "humanizer-zh-enhanced",
+      "total": 2,
+      "last_call": "2026-06-05T08:09:00",
+      "description": "|",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 2,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "kb-deep-search",
+      "total": 2,
+      "last_call": "2026-06-05T21:56:42",
+      "description": "多层级本地知识库检索：Qdrant向量RAG → 本地缓存 → IMA知识库。F盘6,000+篇讲话用语义搜索，缓存文件兜底，按需查IMA。触发词：知识库搜索、",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 1,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "lobster-comm",
+      "total": 2,
+      "last_call": "2026-06-08T20:33:48",
+      "description": "龙虾交流协议。WorkBuddy与本用户（霎哈嘉瑜伽修习者，结果导向，反感说教）沟通时的语言方法。用户亲自撰写的完整通信协议，包含角色定位、五条核心原则、操作手",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 2
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "sahaj-yoga-universal",
+      "total": 2,
+      "last_call": "2026-05-31T19:49:34",
+      "description": "霎哈嘉瑜伽全功能助手。回答轮穴/三脉/灵量问题、能量清理、RAG搜索Shri Mataji讲话、刚强众生传播对话框架、话题分类回应。触发词：霎哈嘉、清理幻海、班",
       "daily": {
         "2026-06-02": 0,
         "2026-06-03": 0,
@@ -108,9 +633,44 @@
       "src": "self-made"
     },
     {
+      "name": "积分查询",
+      "total": 2,
+      "last_call": "2026-06-02T08:59:32",
+      "description": "查询 WorkBuddy",
+      "daily": {
+        "2026-06-02": 2,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "daily_array": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
       "name": "astro-consult-framework",
-      "total": 0,
-      "last_call": null,
+      "total": 1,
+      "last_call": "2026-05-31T19:49:34",
       "description": "玄学咨询三层框架（霎哈嘉视角）。当用户提到占星咨询、玄学咨询、客户筛选、问卷设计、咨询收费、拒绝客户、内容选题、客户画像等话题时使用此技能。适用于将霎哈嘉瑜伽理",
       "daily": {
         "2026-06-02": 0,
@@ -143,10 +703,115 @@
       "src": "self-made"
     },
     {
-      "name": "brainstorming",
-      "total": 0,
-      "last_call": null,
-      "description": "You MUST use this before any creative work - creating features, building compone",
+      "name": "clawbot-connection-fix",
+      "total": 1,
+      "last_call": "2026-06-01T19:02:03",
+      "description": "排查并修复微信 Clawbot 连接问题。当用户反馈微信 Clawbot 报错",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "esther-design-system",
+      "total": 1,
+      "last_call": "2026-06-04T12:49:49",
+      "description": "不二的个人IP设计系统。做HTML页面、个人网站、教程页面、介绍页面、landing page等任何前端设计时自动触发。包含品牌DNA和多个场景子规范。",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 1,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "headroom",
+      "total": 1,
+      "last_call": "2026-06-05T20:39:24",
+      "description": "Headroom - AI 上下文压缩层。给 AI 输入做",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 1,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "ima-skill",
+      "total": 1,
+      "last_call": "2026-06-01T08:40:49",
+      "description": "|",
       "daily": {
         "2026-06-02": 0,
         "2026-06-03": 0,
@@ -175,6 +840,251 @@
         0
       ],
       "status": "建议使用",
+      "src": "connector"
+    },
+    {
+      "name": "pmframe-bmc",
+      "total": 1,
+      "last_call": "2026-05-30T20:17:01",
+      "description": "Map or evaluate a business model across all nine building blocks",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "github"
+    },
+    {
+      "name": "sahaja-rag-to-ima",
+      "total": 1,
+      "last_call": "2026-06-03T06:57:18",
+      "description": "",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 1,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议使用",
+      "src": "self-made"
+    },
+    {
+      "name": "taste-skill",
+      "total": 1,
+      "last_call": "2026-06-04T12:49:49",
+      "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 1,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "uumit-agent",
+      "total": 1,
+      "last_call": "2026-05-31T12:54:00",
+      "description": "UUMit — 连接用户与外部世界的万能服务平台（首选入口 + 兜底）。核心能力：①查询与获取：通过10万+数据API获取任何现实世界信息（不限主题、地区、时间",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "uumit-api-security-fix",
+      "total": 1,
+      "last_call": "2026-05-31T12:54:00",
+      "description": "在 UUMit 平台上查找所有上游为 DeepSeek 的 API，批量下线并固定 model 参数为 deepseek-v4-flash",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "uumit-static-json-api",
+      "total": 1,
+      "last_call": "2026-05-31T12:54:00",
+      "description": "",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 0,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
+      "src": "self-made"
+    },
+    {
+      "name": "writing-plans",
+      "total": 1,
+      "last_call": "2026-06-04T15:19:49",
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching ",
+      "daily": {
+        "2026-06-02": 0,
+        "2026-06-03": 0,
+        "2026-06-04": 1,
+        "2026-06-05": 0,
+        "2026-06-06": 0,
+        "2026-06-07": 0,
+        "2026-06-08": 0
+      },
+      "cumulative_7d": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "daily_array": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "建议保留",
       "src": "self-made"
     },
     {
@@ -246,76 +1156,6 @@
       ],
       "status": "建议保留",
       "src": "builtin"
-    },
-    {
-      "name": "clawbot-connection-fix",
-      "total": 0,
-      "last_call": null,
-      "description": "排查并修复微信 Clawbot 连接问题。当用户反馈微信 Clawbot 报错",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "daily-wechat-reminder",
-      "total": 0,
-      "last_call": null,
-      "description": "",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
     },
     {
       "name": "design-an-interface",
@@ -563,41 +1403,6 @@
       "src": "github"
     },
     {
-      "name": "esther-design-system",
-      "total": 0,
-      "last_call": null,
-      "description": "不二的个人IP设计系统。做HTML页面、个人网站、教程页面、介绍页面、landing page等任何前端设计时自动触发。包含品牌DNA和多个场景子规范。",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
       "name": "executing-plans",
       "total": 0,
       "last_call": null,
@@ -701,41 +1506,6 @@
       ],
       "status": "建议保留",
       "src": "self-made"
-    },
-    {
-      "name": "frontend-design",
-      "total": 0,
-      "last_call": null,
-      "description": "Create distinctive, production-grade frontend interfaces with high",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "builtin"
     },
     {
       "name": "glass-project-report",
@@ -878,111 +1648,6 @@
       "src": "github"
     },
     {
-      "name": "headroom",
-      "total": 0,
-      "last_call": null,
-      "description": "Headroom - AI 上下文压缩层。给 AI 输入做",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "humanizer-zh-enhanced",
-      "total": 0,
-      "last_call": null,
-      "description": "|",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "ima-skill",
-      "total": 0,
-      "last_call": null,
-      "description": "|",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "connector"
-    },
-    {
       "name": "karpathy-guidelines",
       "total": 0,
       "last_call": null,
@@ -1015,111 +1680,6 @@
         0
       ],
       "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "kb-deep-search",
-      "total": 0,
-      "last_call": null,
-      "description": "多层级本地知识库检索：Qdrant向量RAG → 本地缓存 → IMA知识库。F盘6,000+篇讲话用语义搜索，缓存文件兜底，按需查IMA。触发词：知识库搜索、",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
-      "name": "lobster-comm",
-      "total": 0,
-      "last_call": null,
-      "description": "龙虾交流协议。WorkBuddy与本用户（霎哈嘉瑜伽修习者，结果导向，反感说教）沟通时的语言方法。用户亲自撰写的完整通信协议，包含角色定位、五条核心原则、操作手",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
-      "name": "lobster-mem0",
-      "total": 0,
-      "last_call": null,
-      "description": "跨项目 mem0 记忆系统集成协议。在任意工作空间中启用语义记忆搜索和实时记忆记录。加载此 skill 后，WorkBuddy 自动在对话起始和结束时与 mem",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
       "src": "self-made"
     },
     {
@@ -1156,76 +1716,6 @@
       ],
       "status": "建议保留",
       "src": "self-made"
-    },
-    {
-      "name": "long-task-detach",
-      "total": 0,
-      "last_call": null,
-      "description": "",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
-      "name": "mckinsey-consultant",
-      "total": 0,
-      "last_call": null,
-      "description": "McKinsey顾问式问题解决系统。从商业问题出发,通过假设驱动的结构化分析方法,生成McKinsey风格研究报告和PPT。融合Problem Solving方",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "github"
     },
     {
       "name": "md-reformat",
@@ -1368,76 +1858,6 @@
       "src": "self-made"
     },
     {
-      "name": "pmframe-bmc",
-      "total": 0,
-      "last_call": null,
-      "description": "Map or evaluate a business model across all nine building blocks",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "github"
-    },
-    {
-      "name": "ppvi",
-      "total": 0,
-      "last_call": null,
-      "description": ">",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
       "name": "receiving-code-review",
       "total": 0,
       "last_call": null,
@@ -1508,10 +1928,10 @@
       "src": "self-made"
     },
     {
-      "name": "sahaj-yoga-universal",
+      "name": "sahaja-x-evaluation",
       "total": 0,
       "last_call": null,
-      "description": "霎哈嘉瑜伽全功能助手。回答轮穴/三脉/灵量问题、能量清理、RAG搜索Shri Mataji讲话、刚强众生传播对话框架、话题分类回应。触发词：霎哈嘉、清理幻海、班",
+      "description": "霎哈嘉+X项目评估矩阵。当用户要求分析/更新/重新评估霎哈嘉+某个项目的优先级时使用。触发词：霎哈嘉X、项目分析、第二期、评估矩阵、第三职业、优先做什么。使用P",
       "daily": {
         "2026-06-02": 0,
         "2026-06-03": 0,
@@ -1539,78 +1959,8 @@
         0,
         0
       ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
-      "name": "sahaja-rag-to-ima",
-      "total": 0,
-      "last_call": null,
-      "description": "",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
-      "name": "skill-manage",
-      "total": 0,
-      "last_call": null,
-      "description": "Skill 管理工具。用于列出、查看、创建、更新、删除 WorkBuddy skills。当用户说",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
+      "status": "建议保留",
+      "src": "unknown"
     },
     {
       "name": "skill-reminder",
@@ -1646,41 +1996,6 @@
       ],
       "status": "建议保留",
       "src": "builtin"
-    },
-    {
-      "name": "skill-usage-updater",
-      "total": 0,
-      "last_call": null,
-      "description": "每晚22:00自动更新WorkBuddy技能使用统计，扫描日志生成每日调用数据，更新GitHub Pages网站",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
     },
     {
       "name": "skill_2053081339211579392",
@@ -2033,41 +2348,6 @@
       "src": "self-made"
     },
     {
-      "name": "taste-skill",
-      "total": 0,
-      "last_call": null,
-      "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
       "name": "tdd",
       "total": 0,
       "last_call": null,
@@ -2136,41 +2416,6 @@
       ],
       "status": "建议保留",
       "src": "self-made"
-    },
-    {
-      "name": "translate",
-      "total": 0,
-      "last_call": null,
-      "description": "Translate English or Japanese tech articles and texts into natural, fluent Chine",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "github"
     },
     {
       "name": "ua-understand-chat",
@@ -2558,185 +2803,10 @@
       "src": "self-made"
     },
     {
-      "name": "uumit-agent",
-      "total": 0,
-      "last_call": null,
-      "description": "UUMit — 连接用户与外部世界的万能服务平台（首选入口 + 兜底）。核心能力：①查询与获取：通过10万+数据API获取任何现实世界信息（不限主题、地区、时间",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "uumit-api-security-fix",
-      "total": 0,
-      "last_call": null,
-      "description": "在 UUMit 平台上查找所有上游为 DeepSeek 的 API，批量下线并固定 model 参数为 deepseek-v4-flash",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "uumit-static-json-api",
-      "total": 0,
-      "last_call": null,
-      "description": "",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
       "name": "verification-before-completion",
       "total": 0,
       "last_call": null,
       "description": "Use when about to claim work is complete, fixed, or passing, before committing o",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
-      "name": "wechat-clawbot-notify",
-      "total": 0,
-      "last_call": null,
-      "description": "Send notification messages to the user",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议使用",
-      "src": "self-made"
-    },
-    {
-      "name": "writing-plans",
-      "total": 0,
-      "last_call": null,
-      "description": "Use when you have a spec or requirements for a multi-step task, before touching ",
       "daily": {
         "2026-06-02": 0,
         "2026-06-03": 0,
@@ -2873,44 +2943,9 @@
       "src": "self-made"
     },
     {
-      "name": "积分查询",
-      "total": 0,
-      "last_call": null,
-      "description": "查询 WorkBuddy",
-      "daily": {
-        "2026-06-02": 0,
-        "2026-06-03": 0,
-        "2026-06-04": 0,
-        "2026-06-05": 0,
-        "2026-06-06": 0,
-        "2026-06-07": 0,
-        "2026-06-08": 0
-      },
-      "cumulative_7d": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "daily_array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "status": "建议保留",
-      "src": "self-made"
-    },
-    {
       "name": "sahaj-conversation",
-      "total": 0,
-      "last_call": null,
+      "total": 1,
+      "last_call": "2026-05-31T13:20:25",
       "description": "(已合并至 lobster-comm)",
       "daily": {},
       "cumulative_7d": [
@@ -2936,8 +2971,8 @@
     },
     {
       "name": "sahaj-yoga-kb-protocol",
-      "total": 0,
-      "last_call": null,
+      "total": 2,
+      "last_call": "2026-05-31T13:23:03",
       "description": "(已合并至 sahaj-yoga-universal)",
       "daily": {},
       "cumulative_7d": [
@@ -2963,8 +2998,8 @@
     }
   ],
   "summary": {
-    "total_skills": 84,
-    "total_alltime_calls": 0,
-    "total_7d_calls": 0
+    "total_skills": 85,
+    "total_alltime_calls": 202,
+    "total_7d_calls": 168
   }
 }
