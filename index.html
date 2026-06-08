@@ -115,10 +115,16 @@
   .call-zero{color:var(--red)}
   .section-label{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
   .sl-hot{background:rgba(48,209,88,0.12);color:#248a3d}
-  .sl-keep{background:rgba(0,113,227,0.10);color:#0058b0}
-  .sl-建议删除{background:var(--red-soft);color:#b81b12}
+  .sl-keep{background:var(--orange-soft);color:#b86800}
+  .sl-remove{background:var(--red-soft);color:#b81b12}
   .sl-deleted{background:rgba(142,142,147,0.12);color:#8e8e93;text-decoration:line-through}
   .sl-merged{background:rgba(48,209,88,0.08);color:#248a3d;border:1px dashed rgba(48,209,88,0.3)}
+  /* 状态色块（技能名前） */
+  .sdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .sdot-hot{background:#30d158}
+  .sdot-keep{background:var(--orange)}
+  .sdot-remove{background:var(--red)}
+  .sdot-done{background:#c7c7cc}
   .sl-self{background:rgba(0,113,227,0.10);color:#0058b0}
   .sl-github{background:rgba(0,0,0,0.06);color:#555}
   .sl-market{background:rgba(255,159,10,0.12);color:#b86800}
@@ -315,13 +321,32 @@ function filterData(tab) {
   return skills;
 }
 
-function getStatus(st, desc) {
+function getStatus(st) {
   if(st==='已合并') return '<span class="section-label sl-merged">已合并</span>';
-  if(st==='火热使用中') return '<span class="section-label sl-hot">火热使用中</span>';
+  if(st==='火热使用') return '<span class="section-label sl-hot">火热使用</span>';
   if(st==='建议保留') return '<span class="section-label sl-keep">建议保留</span>';
-  if(st==='建议删除') return '<span class="section-label sl-建议删除">建议删除</span>';
+  if(st==='建议删除') return '<span class="section-label sl-remove">建议删除</span>';
   if(st==='已删除') return '<span class="section-label sl-deleted">已删除</span>';
   return `<span class="section-label">${st}</span>`;
+}
+
+// 技能名前面的色块，颜色与状态一致
+function getStatusDot(st) {
+  if(st==='火热使用') return '<span class="sdot sdot-hot"></span>';
+  if(st==='建议保留') return '<span class="sdot sdot-keep"></span>';
+  if(st==='建议删除') return '<span class="sdot sdot-remove"></span>';
+  if(st==='已合并'||st==='已删除') return '<span class="sdot sdot-done"></span>';
+  return '<span class="sdot sdot-done"></span>';
+}
+
+// 状态排序优先级
+function statusRank(st) {
+  if(st==='火热使用') return 1;
+  if(st==='建议保留') return 2;
+  if(st==='已合并') return 3;
+  if(st==='建议删除') return 4;
+  if(st==='已删除') return 5;
+  return 9;
 }
 function getSource(s) {
   const m={'self-made':'sl-self','github':'sl-github','marketplace':'sl-market','builtin':'sl-builtin','connector':'sl-connector'};
@@ -338,11 +363,18 @@ function getCallClass(c) {
 function render(tab) {
   currentTab = tab;
   const filtered = filterData(tab);
-  filtered.sort((a,b)=>b.t-a.t || a.n.localeCompare(b.n));
+  // 按状态优先级排序，同状态内按调用次数降序
+  filtered.sort((a,b)=>{
+    const ra = statusRank(a.st||'建议保留');
+    const rb = statusRank(b.st||'建议保留');
+    if(ra!==rb) return ra-rb;
+    return b.t-a.t || a.n.localeCompare(b.n);
+  });
   document.getElementById('table-body').innerHTML = filtered.map((s,i)=>{
+    const dot = getStatusDot(s.st||'建议保留');
     return `<tr>
       <td style="color:var(--text-caption);font-size:13px;padding-right:8px">${i+1}</td>
-      <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.n}</td>
+      <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${dot}${s.n}</td>
       <td class="cum-cell" style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums" onmouseenter="showTooltipDaily(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.t}</td>
       <td>${getSource(s.s||'unknown')}</td>
       <td>${getStatus(s.st||'建议保留')}</td>
