@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T09:19:21.218697",
+  "generated_at": "2026-06-16T10:19:59.299883",
   "date_labels": [
     "2026-06-10",
     "2026-06-11",
@@ -25,7 +25,7 @@
     48,
     47,
     37,
-    15
+    16
   ],
   "total_cumulative": [
     42,
@@ -34,13 +34,13 @@
     152,
     199,
     236,
-    251
+    252
   ],
   "skills": [
     {
       "name": "lobster-mem0",
-      "total": 99,
-      "last_call": "2026-06-16T08:55:13",
+      "total": 100,
+      "last_call": "2026-06-16T09:41:21",
       "description": "在 Windows 环境下搭建 Mem0 记忆系统的完整方案（merged)",
       "daily": {
         "2026-06-10": 14,
@@ -49,7 +49,7 @@
         "2026-06-13": 9,
         "2026-06-14": 10,
         "2026-06-15": 12,
-        "2026-06-16": 4
+        "2026-06-16": 5
       },
       "cumulative_7d": [
         14,
@@ -58,7 +58,7 @@
         47,
         57,
         69,
-        73
+        74
       ],
       "daily_array": [
         14,
@@ -67,7 +67,7 @@
         9,
         10,
         12,
-        4
+        5
       ],
       "status": "经常使用",
       "src": "self-made"
@@ -1330,7 +1330,7 @@
         0
       ],
       "status": "建议保留",
-      "src": "github"
+      "src": "self-made"
     },
     {
       "name": "lobster-persona",
@@ -1469,7 +1469,7 @@
         0,
         0
       ],
-      "status": "建议保留",
+      "status": "经常使用",
       "src": "self-made"
     },
     {
@@ -1574,7 +1574,7 @@
         0,
         0
       ],
-      "status": "建议保留",
+      "status": "建议删除",
       "src": "self-made"
     },
     {
@@ -1665,11 +1665,92 @@
       ],
       "src": "self-made",
       "status": "已合并"
+    },
+    {
+      "name": "mem0-setup",
+      "total": 1,
+      "last_call": "2026-06-13T21:22:45",
+      "description": "(已合并至 lobster-mem0)",
+      "daily": {},
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "src": "self-made",
+      "status": "已合并"
+    },
+    {
+      "name": "ct-top",
+      "total": 0,
+      "last_call": null,
+      "description": "(已合并至 lobster-mem0)",
+      "daily": {},
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "src": "self-made",
+      "status": "已合并"
+    },
+    {
+      "name": "ima-memory",
+      "total": 0,
+      "last_call": null,
+      "description": "(已合并至 lobster-mem0)",
+      "daily": {},
+      "cumulative_7d": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily_array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "src": "self-made",
+      "status": "已合并"
     }
   ],
   "summary": {
-    "total_skills": 47,
-    "total_alltime_calls": 330,
-    "total_7d_calls": 251
+    "total_skills": 50,
+    "total_alltime_calls": 332,
+    "total_7d_calls": 252
   }
 }
