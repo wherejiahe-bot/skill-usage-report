@@ -6,7 +6,68 @@ const daily_data = {"generated_at": "2026-06-16T22:34:26", "date_range": ["2026-
 
 // Display-friendly arrays
 const date_labels = ["2026-06-07", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16"];
-const date_labels_display = ["2026-06-07", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16"]_DISPLAY;
+// === index.html 需要的变量名 ===
+const DATA_DATE_LABELS = ["2026-06-07", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16"];
+const DATA_DATE_FULL = [...DATA_DATE_LABELS];
+const DATA_TOTAL_DAILY = [1589, 3545, 1665, 2544, 2642, 3712, 5813, 6400, 7200, 6096];
+const DATA_TOTAL_CUMULATIVE = [1589, 5134, 6799, 9343, 11985, 15697, 21510, 27910, 35110, 41206];
+
+// 技能数据（来自 skill-usage-updater）
+const DATA_SKILLS = [
+  {"n":"lobster-mem0","t":108,"d":"微信状态同步与记忆管理","da":[18,14,12,11,9,8,7,6,8,7],"s":"self-made","st":"经常使用"},
+  {"n":"wechat-clawbot-notify","t":78,"d":"微信消息推送通知","da":[12,10,8,6,7,5,6,5,7,5],"s":"builtin","st":"经常使用"},
+  {"n":"daily-wechat-reminder","t":43,"d":"每日微信定时提醒","da":[5,4,3,4,5,3,4,3,4,5],"s":"builtin","st":"经常使用"},
+  {"n":"lobster-comm","t":32,"d":"龙虾通信协议","da":[3,3,4,3,2,3,4,3,3,3],"s":"self-made","st":"经常使用"},
+  {"n":"skill-manage","t":16,"d":"技能列表/创建/删除管理","da":[2,1,2,1,2,1,2,1,1,3],"s":"builtin","st":"建议保留"},
+  {"n":"browserharness","t":14,"d":"浏览器CDP自动化控制","da":[1,1,2,2,1,2,1,1,2,1],"s":"builtin","st":"建议保留"},
+  {"n":"skill-usage-updater","t":9,"d":"自动更新技能使用统计","da":[1,1,1,1,1,1,1,1,1,1],"s":"builtin","st":"建议保留"},
+  {"n":"qq-mail","t":8,"d":"QQ邮箱管理","da":[1,1,1,1,1,1,1,1,0,0],"s":"connector","st":"建议保留"},
+  {"n":"karpathy-guidelines","t":8,"d":"Karpathy编程行为准则","da":[1,1,1,1,1,1,1,1,0,0],"s":"builtin","st":"建议保留"},
+  {"n":"uumit-auto-apply","t":7,"d":"UUMit自动接任务+巡航+自动回复","da":[1,1,0,1,1,1,0,1,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"amruta-daily-push","t":6,"d":"amruta文章推送流水线","da":[1,0,1,1,0,1,0,1,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"translate","t":6,"d":"翻译相关工具","da":[1,0,1,0,1,0,1,1,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"glass-project-report","t":6,"d":"玻璃拟态项目报告","da":[1,1,0,1,0,1,1,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"writing-plans","t":5,"d":"多步任务执行方案编写","da":[1,0,1,0,1,0,0,1,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"headroom","t":5,"d":"上下文空间压缩管理","da":[1,0,1,1,0,0,0,1,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"ppvi","t":4,"d":"拼拼视觉美学设计体系","da":[1,0,0,1,0,1,0,1,0,0],"s":"builtin","st":"建议保留"},
+  {"n":"sahaj-yoga-universal","t":4,"d":"霎哈嘉瑜伽全功能助手","da":[0,1,0,0,1,0,0,1,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"github","t":4,"d":"GitHub连接器访问","da":[1,0,0,1,0,0,1,0,1,0],"s":"connector","st":"建议保留"},
+  {"n":"systematic-debugging","t":4,"d":"系统化Bug排查根因","da":[0,1,0,1,0,0,1,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"long-task-detach","t":3,"d":"长任务沙箱脱离超时执行","da":[0,1,0,0,0,1,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"uumit-agent","t":3,"d":"UUMit综合管理","da":[1,0,0,0,1,0,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"uumit-create-products","t":3,"d":"UUMit批量创建知识商品","da":[0,0,1,0,0,1,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"kb-deep-search","t":2,"d":"本地知识库深度语义检索","da":[1,0,0,0,0,0,1,0,0,0],"s":"builtin","st":"建议保留"},
+  {"n":"100-days-spirit-huangting","t":2,"d":"100天神意照黄庭打卡","da":[0,0,1,0,0,0,0,1,0,0],"s":"builtin","st":"建议保留"},
+  {"n":"volcano-progress","t":2,"d":"火山喷发进度条","da":[0,0,0,1,0,0,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"ardot-design-assistant","t":2,"d":"Ardot设计助手","da":[0,0,0,0,1,0,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"ima-skill","t":2,"d":"IMA知识库管理","da":[0,0,0,0,0,1,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"verification-before-completion","t":2,"d":"任务完成前最终验证","da":[0,0,1,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"grill-me","t":2,"d":"抗压测试","da":[0,0,0,1,0,0,0,1,0,0],"s":"builtin","st":"建议保留"},
+  {"n":"agent-browser","t":1,"d":"浏览器自动化操作","da":[0,0,0,0,0,0,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"sahaja-x-evaluation","t":1,"d":"霎哈嘉+X项目评估矩阵","da":[0,0,0,0,0,0,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"esther-design-system","t":1,"d":"不二个人IP设计系统","da":[0,0,0,0,0,0,0,0,1,0],"s":"builtin","st":"建议保留"},
+  {"n":"brainstorming","t":1,"d":"创意探索和方案设计","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"marketplace-skill-installer","t":1,"d":"WorkBuddy推荐市场Skill安装","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"money-init","t":1,"d":"cheat-on-money首次配置","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"money-find","t":1,"d":"需求反推法找副业机会","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"money-verify","t":1,"d":"副业反诈rubric打分","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"money-plan","t":1,"d":"副业执行方案生成","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"astro-consult-framework","t":1,"d":"状态梳理+情绪+内在宁静咨询框架","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"subagent-driven-development","t":1,"d":"Subagent隔离执行开发","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"web-deploy-github","t":1,"d":"GitHub Pages静态网站部署","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"skill-creator","t":1,"d":"WorkBuddy Skill创建编辑","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"mem0-setup","t":1,"d":"Mem0记忆系统配置","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"scan-new-projects","t":1,"d":"扫描新项目并评估优先级","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"国内旅行聚合查询","t":1,"d":"国内旅行信息查询","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"cloudstudio-deploy","t":1,"d":"CloudStudio静态站点部署","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"expert-manager","t":1,"d":"专家包全生命周期运营","da":[0,0,0,0,0,0,0,0,0,1],"s":"builtin","st":"建议保留"},
+  {"n":"tencent-docs","t":1,"d":"腾讯文档连接器","da":[0,0,0,0,0,0,0,0,0,1],"s":"connector","st":"建议保留"},
+  {"n":"firecrawl","t":0,"d":"Web数据爬取","da":[0,0,0,0,0,0,0,0,0,0],"s":"builtin","st":"建议保留"},
+  {"n":"todoist","t":0,"d":"Todoist任务管理","da":[0,0,0,0,0,0,0,0,0,0],"s":"builtin","st":"建议保留"},
+];
+
+// 旧变量名保留兼容
+const DATA_DATE_LABELS_DISPLAY = DATA_DATE_LABELS;
 const total_daily = [1589, 3545, 1665, 2544, 2642, 3712, 5813, 6400, 7200, 6096];
 const total_cumulative = [1589, 5134, 6799, 9343, 11985, 15697, 21510, 27910, 35110, 41206];
 const skill_ranking = daily_data.skill_usage;
