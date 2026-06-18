@@ -1,238 +1,40 @@
 {
-  "generated_at": "2026-06-18T00:31:05.377921",
-  "date_range": [
-    "2026-06-07",
-    "2026-06-16"
-  ],
-  "total_skills_registered": 47,
-  "total_archived_skills": 60,
-  "daily": [
-    {
-      "date": "2026-06-07",
-      "total_tools": 1589,
-      "total_skills": 24,
-      "unique_tools": 21
-    },
-    {
-      "date": "2026-06-08",
-      "total_tools": 3545,
-      "total_skills": 47,
-      "unique_tools": 25
-    },
-    {
-      "date": "2026-06-09",
-      "total_tools": 1665,
-      "total_skills": 34,
-      "unique_tools": 21
-    },
-    {
-      "date": "2026-06-10",
-      "total_tools": 2544,
-      "total_skills": 41,
-      "unique_tools": 29
-    },
-    {
-      "date": "2026-06-11",
-      "total_tools": 2642,
-      "total_skills": 39,
-      "unique_tools": 23
-    },
-    {
-      "date": "2026-06-12",
-      "total_tools": 3712,
-      "total_skills": 49,
-      "unique_tools": 24
-    },
-    {
-      "date": "2026-06-13",
-      "total_tools": 5813,
-      "total_skills": 66,
-      "unique_tools": 33
-    },
-    {
-      "date": "2026-06-14",
-      "total_tools": 6400,
-      "total_skills": 40,
-      "unique_tools": 35
-    },
-    {
-      "date": "2026-06-15",
-      "total_tools": 7200,
-      "total_skills": 45,
-      "unique_tools": 33
-    },
-    {
-      "date": "2026-06-16",
-      "total_tools": 6096,
-      "total_skills": 43,
-      "unique_tools": 36
-    },
-    {
-      "date": "2026-06-17",
-      "total_tools": 7894,
-      "total_skills": 38,
-      "unique_tools": 21
-    }
-  ],
-  "top_tools": [
-    {
-      "rank": 1,
-      "name": "Bash",
-      "count": 3519
-    },
-    {
-      "rank": 2,
-      "name": "Read",
-      "count": 1431
-    },
-    {
-      "rank": 3,
-      "name": "Edit",
-      "count": 869
-    },
-    {
-      "rank": 4,
-      "name": "Write",
-      "count": 763
-    },
-    {
-      "rank": 5,
-      "name": "Glob",
-      "count": 380
-    },
-    {
-      "rank": 6,
-      "name": "WebFetch",
-      "count": 150
-    },
-    {
-      "rank": 7,
-      "name": "Grep",
-      "count": 118
-    },
-    {
-      "rank": 8,
-      "name": "Skill",
-      "count": 111
-    },
-    {
-      "rank": 9,
-      "name": "TaskOutput",
-      "count": 99
-    },
-    {
-      "rank": 10,
-      "name": "WebSearch",
-      "count": 86
-    },
-    {
-      "rank": 11,
-      "name": "DeferExecuteTool",
-      "count": 86
-    },
-    {
-      "rank": 12,
-      "name": "AskUserQuestion",
-      "count": 77
-    },
-    {
-      "rank": 13,
-      "name": "PowerShell",
-      "count": 42
-    },
-    {
-      "rank": 14,
-      "name": "ToolSearch",
-      "count": 37
-    },
-    {
-      "rank": 15,
-      "name": "TaskUpdate",
-      "count": 33
-    },
-    {
-      "rank": 16,
-      "name": "automation_update",
-      "count": 29
-    },
-    {
-      "rank": 17,
-      "name": "TaskCreate",
-      "count": 27
-    },
-    {
-      "rank": 18,
-      "name": "present_files",
-      "count": 13
-    },
-    {
-      "rank": 19,
-      "name": "Agent",
-      "count": 12
-    },
-    {
-      "rank": 20,
-      "name": "conversation_search",
-      "count": 9
-    },
-    {
-      "rank": 21,
-      "name": "TaskList",
-      "count": 3
-    }
-  ],
-  "skill_usage": [
-    {
-      "rank": 1,
-      "name": "[^",
-      "total_calls": 12
-    },
-    {
-      "rank": 2,
-      "name": "browserharness",
-      "total_calls": 7
-    },
-    {
-      "rank": 3,
-      "name": "nvidia-nim-model-scraper",
-      "total_calls": 6
-    },
-    {
-      "rank": 4,
-      "name": "daily-wechat-reminder",
-      "total_calls": 6
-    },
-    {
-      "rank": 5,
-      "name": "wechat-clawbot-notify",
-      "total_calls": 3
-    },
-    {
-      "rank": 6,
-      "name": "skill-manage",
-      "total_calls": 1
-    },
-    {
-      "rank": 7,
-      "name": "workbuddy-workspace-manager",
-      "total_calls": 1
-    },
-    {
-      "rank": 8,
-      "name": "skill-creator",
-      "total_calls": 1
-    },
-    {
-      "rank": 9,
-      "name": "lobster-persona",
-      "total_calls": 1
-    }
-  ],
-  "summary": {
-    "total_days": 11,
-    "total_tool_calls": 49100,
-    "total_skill_calls": 466,
-    "unique_tools_used": 96,
-    "unique_skills_used": 58
+  "generated_at": "2026-06-18T21:56:50.927071",
+  "date": "2026-06-17",
+  "total_tools": 2992,
+  "total_skills": 45,
+  "tool_counts": {
+    "Bash": 1256,
+    "Read": 566,
+    "conversation_search": 9,
+    "Write": 265,
+    "AskUserQuestion": 33,
+    "Edit": 349,
+    "Glob": 120,
+    "PowerShell": 14,
+    "automation_update": 22,
+    "Skill": 50,
+    "ToolSearch": 14,
+    "Grep": 68,
+    "present_files": 14,
+    "WebFetch": 54,
+    "WebSearch": 32,
+    "TaskCreate": 9,
+    "TaskUpdate": 11,
+    "Agent": 5,
+    "DeferExecuteTool": 28,
+    "TaskOutput": 72,
+    "TaskList": 1
+  },
+  "skill_counts": {
+    "browserharness": 8,
+    "skill-manage": 2,
+    "workbuddy-workspace-manager": 1,
+    "skill-creator": 1,
+    "nvidia-nim-model-scraper": 8,
+    "daily-wechat-reminder": 7,
+    "wechat-clawbot-notify": 5,
+    "lobster-persona": 1,
+    "[^": 12
   }
 }
