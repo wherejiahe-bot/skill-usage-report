@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorkBuddy Skill Usage Report</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --surface: rgba(255,255,255,0.72);
+    --surface-border: rgba(255,255,255,0.6);
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-caption: #8e8e93;
+    --accent: #0071e3;
+    --accent-soft: rgba(0,113,227,0.08);
+    --green: #30d158;
+    --green-soft: rgba(48,209,88,0.12);
+    --orange: #ff9f0a;
+    --orange-soft: rgba(255,159,10,0.12);
+    --red: #ff3b30;
+    --red-soft: rgba(255,59,48,0.10);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Helvetica Neue",sans-serif;
+    background:var(--bg);color:var(--text-primary);
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;overflow-wrap:anywhere;
+    padding:0 24px;
+  }
+  .page{max-width:1040px;margin:0 auto;padding:48px 0 96px}
+
+  .header{text-align:center;padding:48px 0 40px}
+  .header h1{font-size:40px;font-weight:700;letter-spacing:-0.5px}
+  .header .meta{display:flex;justify-content:center;gap:24px;font-size:14px;color:var(--text-caption);margin-top:10px;flex-wrap:wrap}
+
+  /* Stat cards */
+  .grid{display:grid;gap:12px;margin-bottom:40px}
+  .grid-5{grid-template-columns:repeat(5,1fr)}
+  @media(max-width:768px){.grid-5{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.grid-5{grid-template-columns:1fr}}
+  .stat-card{
+    background:var(--surface);
+    backdrop-filter:blur(40px) saturate(1.4);
+    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    border:1px solid var(--surface-border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    text-align:center;
+  }
+  .stat-card .num{font-size:32px;font-weight:700;line-height:1.1}
+  .stat-card .label{font-size:12px;color:var(--text-caption);margin-top:4px}
+
+  /* Cumulative chart */
+  .chart-section{margin-bottom:40px}
+  .chart-section .section-title{font-size:18px;font-weight:600;margin-bottom:16px}
+  .chart-card{
+    background:var(--surface);
+    backdrop-filter:blur(40px) saturate(1.4);
+    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    border:1px solid var(--surface-border);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:var(--shadow);
+  }
+  .chart-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .chart-label{font-size:12px;color:var(--text-caption);width:40px;text-align:right;flex-shrink:0}
+  .chart-bars{flex:1;display:flex;align-items:center;gap:3px;height:28px}
+  .chart-bar-wrap{flex:1;height:20px;background:rgba(0,0,0,0.04);border-radius:4px;overflow:hidden;position:relative}
+  .chart-bar{height:100%;border-radius:4px;transition:width 0.6s ease;min-width:2px}
+  .chart-bar.cum{background:var(--accent)}
+  .chart-num{font-size:11px;color:var(--text-secondary);width:36px;text-align:left;flex-shrink:0;font-variant-numeric:tabular-nums}
+
+  /* Tabs */
+  .tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+  .tab-btn{
+    padding:8px 18px;border-radius:20px;border:none;
+    font-size:14px;font-weight:500;cursor:pointer;
+    background:var(--surface);color:var(--text-secondary);
+    transition:all 0.2s;
+  }
+  .tab-btn:hover{background:var(--accent-soft);color:var(--accent)}
+  .tab-btn.active{background:var(--accent);color:#fff}
+
+  /* Table */
+  .table-wrap{
+    background:var(--surface);
+    backdrop-filter:blur(40px) saturate(1.4);
+    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    border:1px solid var(--surface-border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:visible;
+    position:relative;
+  }
+  table{width:100%;border-collapse:collapse;font-size:14px;table-layout:auto}
+  th,td{white-space:nowrap}
+  th:first-child,td:first-child{width:1%}
+  th:nth-child(4),td:nth-child(4){width:1%}
+  th:nth-child(5),td:nth-child(5){width:1%}
+  th{text-align:left;padding:12px 16px;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;background:rgba(0,0,0,0.02)}
+  td{padding:10px 16px;border-top:1px solid rgba(0,0,0,0.04);vertical-align:middle}
+  tr:hover{background:rgba(0,0,0,0.03)}
+  .skill-name{font-weight:500;cursor:pointer}
+  .cum-cell{cursor:pointer}
+  .call-count{font-weight:600;font-variant-numeric:tabular-nums}
+  .section-label{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+  .sl-hot{background:rgba(48,209,88,0.12);color:#248a3d}
+  .sl-keep{background:rgba(0,113,227,0.10);color:#0058b0}
+  .sl-remove{background:var(--red-soft);color:#b81b12}
+  .sl-deleted{background:rgba(142,142,147,0.12);color:#8e8e93;text-decoration:line-through}
+  .sl-merged{background:rgba(142,142,147,0.10);color:#8e8e93}
+  /* 状态色块（技能名前） */
+  .sdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .sdot-hot{background:#30d158}
+  .sdot-keep{background:var(--orange)}
+  .sdot-remove{background:var(--red)}
+  .sdot-done{background:#c7c7cc}
+  .sl-self{background:rgba(0,113,227,0.10);color:#0058b0}
+  .sl-github{background:rgba(0,0,0,0.06);color:#555}
+  .sl-market{background:rgba(255,159,10,0.12);color:#b86800}
+  .sl-builtin{background:rgba(142,142,147,0.10);color:#6e6e73}
+  .sl-connector{background:rgba(48,209,88,0.10);color:#1a8a3a}
+
+  /* Tooltip */
+  .tooltip{
+    position:fixed;
+    background:rgba(29,29,31,0.92);
+    backdrop-filter:blur(20px) saturate(1.4);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:16px 20px;
+    color:#fff;
+    font-size:13px;
+    pointer-events:none;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity 0.15s,transform 0.15s;
+    z-index:100;
+    min-width:220px;
+    max-width:360px;
+    box-shadow:0 8px 40px rgba(0,0,0,0.3);
+  }
+  .tooltip.show{opacity:1;transform:translateY(0)}
+  .tooltip .tt-name{font-weight:600;font-size:15px;margin-bottom:6px}
+  .tooltip .tt-body{color:rgba(255,255,255,0.65);font-size:13px;line-height:1.45}
+  .tooltip .tt-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;gap:16px}
+  .tooltip .tt-row .day{color:rgba(255,255,255,0.5);font-size:12px}
+  .tooltip .tt-row .val{font-weight:500;font-size:13px;min-width:20px;text-align:right}
+  .tooltip .tt-bar{flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+  .tooltip .tt-bar-fill{height:100%;border-radius:3px;transition:width 0.3s}
+
+  /* Footer */
+  .footer{text-align:center;padding:32px 0;font-size:13px;color:var(--text-caption)}
+  .footer a{color:var(--accent);text-decoration:none}
+  .footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="page" id="app">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Skill Usage Report</h1>
+    <p style="font-size:15px;color:var(--text-secondary);margin-top:6px">WorkBuddy 技能使用情况 · 累计统计</p>
+    <div class="meta">
+      <span>📅 <span id="gen-date">2026-06-06</span></span>
+      <span>📊 <span id="total-skills">83</span> skills</span>
+      <span>🔍 <span id="total-calls">150</span> total calls</span>
+      <span>📈 <span id="weekly-calls">124</span> this week</span>
+    </div>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="grid grid-5" id="stat-cards"></div>
+
+  <!-- Cumulative chart -->
+  <div class="chart-section">
+    <div class="section-title">📈 近7日累计调用趋势</div>
+    <div class="chart-card" id="chart-card"></div>
+  </div>
+
+  <!-- 全部按钮（默认） -->
+  <input type="hidden" id="current-tab" value="all">
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>技能名 <span style="font-weight:400;color:var(--text-caption);font-size:11px">(悬停看说明)</span></th>
+          <th>总调用</th>
+          <th>来源</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip">
+    <div class="tt-name" id="tt-name"></div>
+    <div class="tt-body" id="tt-body"></div>
+  </div>
+
+  <div class="footer">
+    <p>数据来源：WorkBuddy 日志 · 每晚 22:00 自动更新</p>
+    <p><a href="https://github.com/wherejiahe-bot/skill-usage-report">GitHub 仓库</a></p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+const labels = DATA_DATE_LABELS;
+const fullLabels = DATA_DATE_FULL;
+const totalDaily = DATA_TOTAL_DAILY;
+const totalCum = DATA_TOTAL_CUMULATIVE;
+const skills = DATA_SKILLS;
+
+let currentTab = 'all';
+
+// Stat cards
+function renderStats() {
+  const called = skills.filter(s=>s.t>0).length;
+  const zero = skills.filter(s=>s.t===0).length;
+  const selfMade = skills.filter(s=>s.s==='self-made').length;
+  const fromGitHub = skills.filter(s=>s.s==='github').length;
+  const fromMarket = skills.filter(s=>s.s==='marketplace').length;
+  const builtin = skills.filter(s=>s.s==='builtin'||s.s==='connector').length;
+  const wk = totalCum[totalCum.length-1];
+  const deleted = skills.filter(s=>s.st==='已删除').length;
+  const merged = skills.filter(s=>s.st==='已合并').length;
+  const active = skills.length - deleted - merged;
+  document.getElementById('total-skills').textContent = skills.length;
+  document.getElementById('total-calls').textContent = skills.reduce((a,s)=>a+s.t,0);
+  document.getElementById('weekly-calls').textContent = wk;
+  document.getElementById('gen-date').textContent = fullLabels[fullLabels.length-1];
+  document.getElementById('stat-cards').innerHTML = `
+    <div class="stat-card"><div class="num" style="color:#30d158">${called}</div><div class="label">有调用记录</div></div>
+    <div class="stat-card"><div class="num" style="color:#ff3b30">${zero}</div><div class="label">零调用</div></div>
+    <div class="stat-card"><div class="num" style="color:#0071e3">${selfMade}</div><div class="label">自制技能</div></div>
+    <div class="stat-card"><div class="num" style="color:#555">${fromGitHub}</div><div class="label">GitHub下载</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--text-caption)">${active}</div><div class="label">有效技能 ${deleted>0?`(${deleted}已删除)`:''}${merged>0?`(${merged}已合并)`:''}</div></div>
+  `;
+}
+
+// Cumulative chart
+function renderChart() {
+  const max = Math.max(...totalCum, 1);
+  document.getElementById('chart-card').innerHTML = totalCum.map((v,i)=>`<div class="chart-row">
+    <div class="chart-label">${labels[i]}</div>
+    <div class="chart-bars">
+      <div class="chart-bar-wrap"><div class="chart-bar cum" style="width:${(v/max*100).toFixed(1)}%"></div></div>
+    </div>
+    <div class="chart-num">${v}</div>
+  </div>`).join('');
+}
+
+// Tooltip - two modes
+function showTooltipDesc(e, skill) {
+  const tt = document.getElementById('tooltip');
+  document.getElementById('tt-name').textContent = skill.n;
+  document.getElementById('tt-body').innerHTML = skill.d || '无说明';
+  tt.classList.add('show');
+  positionTooltip(e, tt);
+}
+
+function showTooltipDaily(e, skill) {
+  const tt = document.getElementById('tooltip');
+  document.getElementById('tt-name').textContent = `近7天每日调用 · ${skill.n}`;
+  const maxVal = Math.max(...skill.da, 1);
+  document.getElementById('tt-body').innerHTML = skill.da.map((v,i)=>{
+    const pct = (v / maxVal * 100).toFixed(1);
+    return `<div class="tt-row">
+      <span class="day">${labels[i]}</span>
+      <div class="tt-bar"><div class="tt-bar-fill" style="width:${pct}%;background:${v>0?'#30d158':'rgba(255,255,255,0.15)'}"></div></div>
+      <span class="val">${v}</span>
+    </div>`;
+  }).join('');
+  tt.classList.add('show');
+  positionTooltip(e, tt);
+}
+
+function hideTooltip() {
+  document.getElementById('tooltip').classList.remove('show');
+}
+
+function positionTooltip(e, tt) {
+  const rect = tt.getBoundingClientRect();
+  let x = e.clientX + 12;
+  let y = e.clientY - 10;
+  if (x + rect.width > window.innerWidth - 16) x = e.clientX - rect.width - 12;
+  if (y + rect.height > window.innerHeight - 16) y = window.innerHeight - rect.height - 16;
+  if (y < 8) y = 8;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+
+// Table render
+function filterData(tab) {
+  return skills;
+}
+
+function getStatus(st) {
+  if(st==='已合并') return '<span class="section-label sl-merged">已合并</span>';
+  if(st==='经常使用') return '<span class="section-label sl-hot">经常使用</span>';
+  if(st==='建议保留') return '<span class="section-label sl-keep">建议保留</span>';
+  if(st==='建议删除') return '<span class="section-label sl-remove">建议删除</span>';
+  if(st==='已删除') return '<span class="section-label sl-deleted">已删除</span>';
+  return `<span class="section-label">${st}</span>`;
+}
+
+function getStatusDot(st) {
+  if(st==='经常使用') return '<span class="sdot sdot-hot"></span>';
+  if(st==='建议保留') return '<span class="sdot sdot-keep"></span>';
+  if(st==='建议删除') return '<span class="sdot sdot-remove"></span>';
+  return '<span class="sdot sdot-done"></span>';
+}
+
+function statusRank(st) {
+  if(st==='经常使用') return 1;
+  if(st==='建议保留') return 2;
+  if(st==='建议删除') return 3;
+  if(st==='已删除') return 4;
+  if(st==='已合并') return 5;
+  return 9;
+}
+function getSource(s) {
+  const m={'self-made':'sl-self','github':'sl-github','marketplace':'sl-market','builtin':'sl-builtin','connector':'sl-connector'};
+  const l={'self-made':'自制','marketplace':'市场','github':'GitHub','builtin':'内置','connector':'连接器'};
+  return `<span class="section-label ${m[s]||'sl-builtin'}">${l[s]||s}</span>`;
+}
+
+function render() {
+  const filtered = filterData('all');
+  // 按状态优先级排序，同状态内按调用次数降序
+  filtered.sort((a,b)=>{
+    const ra = statusRank(a.st||'建议保留');
+    const rb = statusRank(b.st||'建议保留');
+    if(ra!==rb) return ra-rb;
+    return b.t-a.t || a.n.localeCompare(b.n);
+  });
+  document.getElementById('table-body').innerHTML = filtered.map((s,i)=>{
+    const dot = getStatusDot(s.st||'建议保留');
+    return `<tr>
+      <td style="color:var(--text-caption);font-size:13px;padding-right:8px">${i+1}</td>
+      <td class="skill-name" onmouseenter="showTooltipDesc(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${dot}${s.n}</td>
+      <td class="cum-cell" style="font-size:13px;color:var(--text-secondary);font-variant-numeric:tabular-nums" onmouseenter="showTooltipDaily(event,skills.find(x=>x.n==='${s.n}'))" onmouseleave="hideTooltip()" onmousemove="moveTooltip(event)">${s.t}</td>
+      <td>${getSource(s.s||'unknown')}</td>
+      <td>${getStatus(s.st||'建议保留')}</td>
+    </tr>`;
+  }).join('');
+}
+
+function moveTooltip(e) {
+  const tt = document.getElementById('tooltip');
+  if (!tt.classList.contains('show')) return;
+  positionTooltip(e, tt);
+}
+
+renderStats();
+renderChart();
+render();
+</script>
+</body>
+</html>
